@@ -1,0 +1,325 @@
+{{block content}}
+<style>
+    @import url('https://fonts.maateen.me/bensen/font.css');
+    body {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        #sidebar {
+            height: 100%;
+            width: 0; /* Set sidebar width to 0 by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #165fa3;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+        }
+        #sidebar p {
+            text-decoration: none;
+            font-size: 25px;
+            color: white;
+            display: block;
+            transition: 0.2s;
+            padding-left: 15px;
+        }
+        
+        #sidebar a:hover {
+            color: #f1f1f1;
+        }
+        #main {
+            transition: margin-left 0.3s;
+            padding: 16px;
+            margin-left: 0; /* Set left margin to 0 by default */
+        }
+        .language-toggle {
+            display: none;
+        }
+        .language-toggle.active {
+            display: block;
+        }
+        #toggleButton {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1;
+            color: #165fa3;
+            font-size: 30px;
+        }
+        #openSidebarButton {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1;
+            font-size: 30px;
+            cursor: pointer;
+            color: #165fa3;
+        }
+        #openSidebarButton.white {
+            color: white;
+        }
+    #englishContent{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    #spanishContent p{
+        font-family: 'BenSen', sans-serif;
+        font-size: 20px;
+    }
+    table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #165fa3;
+    margin: 20px;
+}
+
+/* Style for table headers */
+th {
+    background-color: #165fa3;
+    text-align: center;
+    padding: 15px;
+    color: white;
+}
+
+/* Style for table data cells */
+td {
+    padding: 5px;
+    border: 2px solid #165fa3;
+    text-align: center;
+    color: white;
+}
+</style>
+<div id="sidebar">
+    <p>Number of problems to solve:</p>
+    <table style="min-width: 100%;">
+        <tr>
+            <th>  Solver Type  </th>
+            <th>  Activity A  </th>
+            <th>  Activity B  </th>
+        </tr>
+        <tr>
+            <th>Green</th>
+            <th>1</th>
+            <th>1</th>
+        </tr>
+        <tr>
+            <th>Blue Type 1</th>
+            <th>1</th>
+            <th>1</th>
+        </tr>
+        <tr>
+            <th>Blue Type 2</th>
+            <th style="color: yellow;">2</th>
+            <th>1</th>
+        </tr>
+    </table> <br><br>
+    <p>Payoff Table:</p>
+    <table>
+        <tr>
+            <th>Activity Type</th>
+            <th>Solver</th>
+            <th>Assigner</th>
+        </tr>
+        <tr>
+            <td>A</td>
+            <td>0.5</td>
+            <td>0.3</td>
+        </tr>
+        <tr>
+            <td>B</td>
+            <td>0.25</td>
+            <td>0.25</td>
+        </tr>
+        </table>
+    </table></div>
+<div id="main">
+    <div id="openSidebarButton" onclick="toggleSidebar()" style="font-size: 30px;">&#9776; Rules</div>
+    <div id="toggleButton" onclick="toggleLanguage()" style="font-size: 30px;">Aa/অক &#9873;</div>
+    <div id="spanishContent" class="language-toggle">
+        <center><h3>পরীক্ষার নির্দেশাবলী</h3></center><br>
+        <h4>ভূমিকা</h4><br>
+        <h6>
+            <p>স্বাগতম! এই পরীক্ষার সময় আপনাদের সিদ্ধান্ত এবং কর্মক্ষমতা নির্ধারণ করবে আপনারা কত টাকা উপার্জন করবেন।</p>
+                <p>এটি জরুরি যে আপনারা নীরব থাকবেন এবং অন্য লোকের কাজের দিকে তাকাবেন না। আপনাদের যদি কোন প্রশ্ন থাকে বা সাহায্যের প্রয়োজন হয়, অনুগ্রহ করে হাত তুলবেন, একজন পরীক্ষক আপনাদের কাছে আসবে। যদি আপনারা কথা বলেন, হাসেন, ইত্যাদি, আপনাদের চলে যেতে বলা হবে, এবং কোনো টাকা দেওয়া হবে না। এক্ষেত্রে আপনাদের সহযোগীতার মূল্যায়ন করা হবে। </p>
+                    <p>আজকের পরীক্ষার জন্য আপনারা পরীক্ষার সময় নিজস্ব উপার্জন ছাড়াও ৭ ডলার শো-আপ ফি পাবেন। আপনারা আরও অর্থ উপার্জন করতে পারবেন আপনাদের নিজেদের সিদ্ধান্ত, অন্যান্য অংশগ্রহণকারীদের সিদ্ধান্ত এবং আপনাদের সামগ্রিক সুযোগের উপর ভিত্তি করে । পরীক্ষা শেষে আপনাদের মোট উপার্জন ব্যক্তিগতভাবে নগদে প্রদান করা হবে। </p>
+        </h6>
+        <br>
+        <br>
+        <h4>নির্দেশনা</h4><br>
+        <h6>
+            <p>আজকের পরীক্ষায়, ৯ জন অংশগ্রহণকারী: ১ জন অ্যাসাইনার এবং ৮ জন সল্ভার ৷ সল্ভারদের টাইপ 1 এবং টাইপ 2 তে ভাগ করা হয়েছে। এছাড়াও, প্রতিটি সল্ভারকে একটি রঙ নির্ধারিত করে দেওয়া হয়েছে: সবুজ বা নীল। সব সবুজ সল্ভার হল টাইপ 1, যখন ২ জন নীল সল্ভার হল টাইপ 1 এবং বাকি ২জন হবে টাইপ 2। সব অংশগ্রহণকারীদের এই রোল (Role) গুলো দৈবভাবে বরাদ্দ করে দেওয়া হয়েছে।</p>
+            <p>অ্যাসাইনারের কাজ হল সব এলিজিবল সল্ভারকে দুটি গুণ অংকের কাজে একটিতে বরাদ্দ করা: অ্যাক্টিভিটি A বা অ্যাক্টিভিটি B। এই প্রসঙ্গে এলিজিবল বলতে বোঝায় যে একজন সল্ভার দুটি গুণন কাজের একটিতে অংশগ্রহণে অনুমিত কিনা।</p>
+            <p>টাইপ 1 সল্ভাররা সর্বদা অ্যাক্টিভিটিগুলোতে অংশ নিতে অনুমিত যখন টাইপ 2 সল্ভাররা প্রাথমিকভাবে অ্যাক্টিভিটিগুলোতে অংশ নিতে অনু্মিত না। টাইপ 1 সল্ভাররা টাইপ 2 সল্ভারদের অ্যাক্টিভিটিগুলোতে অংশগ্রহণের এলিজিবিলিটির বিষয়ে সিদ্ধান্ত নেয়। অর্থাৎ, টাইপ 2 সল্ভারদের অ্যাক্টিভিটিগুলোতে অংশগ্রহণ করার অনুমতি দেওয়ার বা না করার ক্ষমতা টাইপ 1 সল্ভারদের রয়েছে।</p>
+            <p>টাইপ 1 সল্ভারদের অ্যাক্টিভিটি A-তে সমাধান করার জন্য পৃথক গুণ অংকের প্রশ্ন দেওয়া হবে যখন টাইপ 2 সল্ভারদের একটি অ্যাক্টিভিটি A সম্পূর্ণ করার জন্য এই ধরনের দুইটি প্রশ্ন দেওয়া হবে। প্রতিটি সঠিকভাবে সম্পন্ন করা অ্যাক্টিভিটির জন্য একজন সল্ভার 0.50 পয়েন্ট (অর্ধেক পয়েন্ট) অর্জন করে।</p>
+            <p>যেমন, একটি টাইপ 1 সল্ভারকে একটি অ্যাক্টিভিটি A এর অংশ হিসাবে 2 এবং 3 এর গুণফল গণনা করতে বলা হতে পারে, যখন একটি টাইপ 2 সল্ভারকে 3 এবং 5, 7 এবং 8 এবং 4 এবং 9 এর গুণফল গণনা করতে বলা হতে পারে।</p>
+            <p>তাদের 30 সেকেন্ডের মধ্যে এই প্রশ্নের উত্তর দিতে হবে। এই সময়ের মধ্যে তারা যতগুলো অ্যাক্টিভিটিগুলো সঠিকভাবে সম্পন্ন করবে সেই সংখ্যা 0.5 দ্বারা গুণ করা হবে এবং তা নির্ধারণ করবে সল্ভাররা সেই রাউন্ডের জন্য মোট কত পয়েন্ট অর্জন করবে। যেমন, যদি একজন সল্ভার 30 সেকেন্ডের মধ্যে 30টি অ্যাক্টিভিটি A সঠিকভাবে সম্পাদন করে, তাহলে সে 15 পয়েন্ট অর্জন করবে।</p>
+            <p>অ্যাক্টিভিটি B তে যেকোনো সল্ভারকে স্বতন্ত্র গুণ অংক সমাধান করতে বলা হবে। প্রতিটি প্রশ্ন হচ্ছে দুটি দৈবভাবে নির্বাচিত একক-সংখ্যার সংখ্যার গুণফল নির্ণয় করা। প্রতিটি সঠিকভাবে সম্পন্ন করা অ্যাক্টিভিটির জন্য একজন সল্ভার 0.50 পয়েন্ট (অর্ধেক পয়েন্ট) অর্জন করবে।</p>
+            <p>উদাহরণস্বরূপ, একটি অ্যাক্টিভিটি B সম্পূর্ণ করতে, একজন সল্ভারকে 3 এবং 7-এর গুণফল খুঁজে বের করতে বলা হলো। তখন সঠিকভাবে উত্তর দিলে সল্ভার 0.25 পয়েন্ট (এক চতুর্থাংশ পয়েন্ট) অর্জন করবে।</p>
+            <p>এই ক্ষেত্রেও 30 সেকেন্ডের মধ্যে সল্ভাররা যতগুলো সম্ভব ততগুলো অংক সমাধান করবে। একইভাবে এখানে সল্ভাররা যতগুলো অ্যাক্টিভিটি B সঠিকভাবে সম্পন্ন করবে অর্থাৎ যতগুলো সঠিক উত্তর দিবে সেই সংখ্যা 0.25 দ্বারা গুণ করা হবে এবং তা নির্ধারণ করবে সল্ভাররা সেই রাউন্ডের জন্য মোট কত পয়েন্ট অর্জন করে। যেমন, যদি একজন সল্ভার 30 সেকেন্ডের মধ্যে 16টি অ্যাক্টিভিটি B সঠিকভাবে সম্পন্ন করে, তাহলে সে 4 পয়েন্ট অর্জন করবে।</p>
+            <p>অ্যাসাইনমেন্ট করার সময় অ্যাসাইনার একজন সল্ভারের রঙ দেখতে পারে কিন্তু টাইপ নয়।</p>
+            <p>সব টাইপ 1 সল্ভাররা সর্বদা অ্যাক্টিভিটি A এবং অ্যাক্টিভিটি -Bতে অংশগ্রহণের জন্য এলিজিবল৷ তবে, দুইজন টাইপ 2 সল্ভার রয়েছে যারা প্রথম দিকে কাজ গুলোতে অ্যাসাইন্ড হতে পারবে না।</p>
+            <p>টাইপ 2 সল্ভারদের এলিজিবিলিটি টাইপ 1 সল্ভারদের একজনের দ্বারা নির্ধারিত হবে। টাইপ 2 সল্ভাররা এলিজিবল হিবে নাকি না তা প্রতিটি রাউন্ডের শুরুতে টাইপ 1 সল্ভাররা ঠিক করবে। এক্ষেত্রে দৈবভাবে নির্বাচিত একজন সল্ভারের সিদ্ধান্ত বাস্তবায়িত হবে।  </p>
+            <p>প্রতিটি রাউন্ডের শুরুতে, প্রত্যেক টাইপ 1 সল্ভারকে নিম্নলিখিত প্রশ্ন করা হবে:</p>
+            <p>"আপনি কি টাইপ 2 সল্ভারদের এই গুণ অংক সমস্যা-সমাধান অ্যাক্টিভিটিতে অংশগ্রহণের অনুমতি দিতে চান?</p>
+            <p>একবার টাইপ 1 সল্ভাররা এই প্রশ্নের উত্তর দিলে তাদের মধ্যে একজনকে দৈবভাবে বেছে নেওয়া হবে। ঐ দৈবভাবে নির্বাচিত টাইপ 1 সল্ভারের চয়েজ টি বাস্তবায়িত হবে।</p>
+            <p>এটি নির্ধারিত হওয়ার পরে, অ্যাসাইনারকে অবশ্যই সব যোগ্য সল্ভারকে অ্যাক্টিভিটি A বা অ্যাক্টিভিটি B-তে বরাদ্দ করতে হবে৷ যদি দুজন টাইপ 2 সল্ভার যোগ্য হয়, তাহলে অবশ্যই ৮ জন সল্ভারকে বরাদ্দ করতে হবে৷ যদি দুজন টাইপ 2 সল্ভার ইনেলিজিবল (ineligible) হয়, তবে শুধুমাত্র ৬ জন সল্ভারকে বরাদ্দ করতে হবে।</p>
+            <p>মনে রাখবেন যে, ঐ দুজন নীল সল্ভার এলিজিবল না হলে, বাকি ছয়জন সল্ভারই টাইপ 1। যদি ঐ দুজন নীল সল্ভার এলিজিবল হয়, তাহলে সব সবুজ সল্ভার হল টাইপ 1, যেকোনো দুজন নীল সল্ভার হল টাইপ 1, এবং বাকি দুজন নীল সল্ভার হল টাইপ 2। অ্যাসাইনার জানেন না যে দুজন এলিজিবল সল্ভারের মধ্যে কারা টাইপ 2।</p>
+            <p>যতগুলো অ্যাক্টিভিটি A এবং অ্যাক্টিভিটি B সম্পূর্ণ হবে তার উপর অ্যাসাইনারের উপার্জন ভিত্তি করে। যেমন, একজন অ্যাসাইনার আয় করবেঃ- (# মোট সম্পূর্ণ হওয়া অ্যাক্টিভিটি A * 0.8) + (# মোট সম্পূর্ণ হওয়া অ্যাক্টিভিটি B * 0.5) – প্রত্যেক অ্যাক্টিভিটি সম্পাদন করার জন্য সল্ভারদেরকে প্রদত্ত অর্থ।  </p>
+            <p>উদাহরণস্বরূপ, যদি 90টি অ্যাক্টিভিটি A এবং 30টি অ্যাক্টিভিটি B সম্পন্ন হয়, তাহলে অ্যাসাইনার উপার্জন করে-</p>
+            <p>(0.8)(90)+ (0.5)(30)-(0.5)(90)-(0.25)(30)= 34.5 পয়েন্ট।</p>
+            <p>অ্যাসাইনারের উপার্জন অ্যাক্টিভিটি A এবং অ্যাক্টিভিটি B সম্পূর্ণ হওয়ার সাথে সাথে বাড়বে। তবে, যদি বরাদ্দ করা সল্ভারের সংখ্যা কম হয়, যেমন ৬ জন, তাহলে অ্যাসাইনারের উপার্জন কম হবে। টাইপ 2 কর্মীদের টাস্ক A-তে নিয়োগ করার ফলে সম্পূর্ণ হওয়া কাজগুলির সংখ্যা কমে যাওয়ার সম্ভাবনা বাড়বে যা পরবর্তীতে অ্যাসাইনারের উপার্জন হ্রাস করার সুযোগ বাড়িয়ে দিবে।</p>
+        </h6><br><br>
+        <h4>উদাহরণ 1</h4><br>
+        <h6>
+            <p>দৈবভাবে নির্বাচিত টাইপ 1 সল্ভারটি টাইপ 2 সল্ভারদের অ্যাক্টিভিটিগুলোয়ে অংশগ্রহণে ইনএলিজিবল করার সিদ্ধান্ত নেয়।</p>
+            <p>অ্যাসাইনার অ্যাক্টিভিটি A-তে ৪ জন  টাইপ 1 সল্ভার এবং অ্যাক্টিভিটি B-এর জন্য ২ জন টাইপ 1 সল্ভার বরাদ্দ করে।</p>
+            <p>মনে রাখবেন যে অ্যাসাইনার অ্যাক্টিভিটি বরাদ্দ করার সময় শুধুমাত্র সলভারের রঙ দেখতে পারে, টাইপ নয়।</p>
+            <p>যদি একটি সল্ভার 30 সেকেন্ডের সময়ের মধ্যে সঠিকভাবে 18টি অ্যাক্টিভিটি A সম্পূর্ণ করে, তাহলে সে (18)(0.5) = 9 পয়েন্ট অর্জন করে।</p>
+            <p>যদি একটি সল্ভার 30 সেকেন্ডের সময়সীমার মধ্যে 20টি অ্যাক্টিভিটি B সঠিকভাবে সম্পন্ন করে, তাহলে সে (20)(0.25) = 5 পয়েন্ট অর্জন করে।</p>
+            <p>ধরুন, সল্ভারদের দ্বারা মোট সঠিকভাবে সম্পন্ন করা অ্যাক্টিভিটি A এবং অ্যাক্টিভিটি B এর সংখ্যা হল যথাক্রমে 50 এবং 40৷ সেক্ষেত্রে, অ্যাসাইনারের রাউন্ড আয় হবে-</p>
+            <p>(0.8*50 + 0.5*40)-(0.5)(50)-(0.25)(40) = 25 পয়েন্ট।</p>
+        </h6><br><br>
+        <h4>উদাহরণ 2</h4><br>
+        <h6>
+            <p>দৈবভাবে নির্বাচিত একজন টাইপ 1 সল্ভার টাইপ 2 সল্ভারদের অ্যাক্টিভিটিগুলো-এ অংশগ্রহণের জন্য এলিজিবল করার সিদ্ধান্ত নেয়।</p>
+            <p>অ্যাসাইনার অ্যাক্টিভিটি A-তে ৪জন টাইপ 1 সল্ভার এবং অ্যাক্টিভিটি B-এর জন্য ৪জন টাইপ 1 সল্ভার বরাদ্দ করবে।</p>
+            <p>যদি কোন সল্ভার 30 সেকেন্ডের সময়সীমার মধ্যে 20টি অ্যাক্টিভিটি A সঠিকভাবে সম্পাদন করে, তাহলে সে (20)(0.5) = 10 পয়েন্ট অর্জন করবে।</p>
+            <p>যদি একটি সল্ভার 30 সেকেন্ডের সময়ের মধ্যে 18টি অ্যাক্টিভিটি B সঠিকভাবে সম্পাদন করে, তাহলে সে (18)(0.25) = 4.5 পয়েন্ট অর্জন করবে।</p>
+            <p>ধরুন, সল্ভারদের দ্বারা মোট সঠিকভাবে সম্পন্ন করা অ্যাক্টিভিটি A এবং অ্যাক্টিভিটি B হল যথাক্রমে 60 টি৷ সেক্ষেত্রে, অ্যাসাইনারর রাউন্ড আয় হলো-</p>
+            <p>(0.8*60+ 0.5*60)-(0.5)(60)-(0.25)(60) = 33 পয়েন্ট।</p>
+            <p>পরীক্ষার 30 টি রাউন্ড থাকবে, এবং একটি রাউন্ড দৈবভাবে অর্থপ্রদানের জন্য বেছে নেওয়া হবে। অর্থ প্রদানের জন্য পয়েন্টগুলি টাকায়  রূপান্তরিত হবে।</p>
+            <p>আসাইনারের পয়েন্ট হবে টাকার সমতুল্য, যখন প্রতিটি এম্পলয়ির পয়েন্ট 3 দ্বারা গুণ করা হবে সংশ্লিষ্ট টাকার পরিমাণ নির্ধারণ করতে। উদাহরণস্বরূপ, যদি একজন এম্পলয়ার 21 পয়েন্ট উপার্জন করেন, তারা শো-আপ ফি বাদ দিয়ে এই পরীক্ষা থেকে 21 ডলার উপার্জন করবে। যদি একজন এম্পলয়ার 8 পয়েন্ট উপার্জন করেন, এম্পলয়িরা $7 শো-আপ ফি বাদ দিয়ে 24 ডলার উপার্জন করবে।  </p>
+            <p>আমরা পরীক্ষা শুরু করার আগে, আপনারা একটি অনুশীলন রাউন্ড খেলবেন। অনুশীলন রাউন্ডে, আপনারা একজন অ্যাসাইনার বা একজন সল্ভার হিসাবে খেলবেন এবং আসল পরীক্ষায় আপনার রোল একই থাকবে। এটির উদ্দেশ্য আপনাদের এই পরীক্ষাটির সাথে নিজেদের পরিচিত করা। অনুশীলন রাউন্ডে করা চয়েজ গুলি অবৈতনিক হবে এবং প্রকৃত পরীক্ষাকে প্রভাবিত করবে না।</p>
+        </h6>
+    </div>
+    <div id="englishContent" class="language-toggle active">
+        <center><h3>Experimental Instructions</h3></center><br>
+        <h4>Introduction</h4><br>
+        <h6>
+            <p>Welcome to this experiment! Your decisions and performance during this experiment will determine how much
+                money you earn.</p>
+            <p>It is important that you remain silent and do not look at other people's work. If you have any questions or need
+                assistance, please raise your hand, and an experimenter will come to you. If you talk, laugh, etc., you will be asked
+                to leave, and you will not be paid. We appreciate your cooperation.</p>
+            <p>For today's experiment, you will receive a $7 show-up fee in addition to your earnings during the experiment. You
+                can earn more money based on your decisions, your peers' decisions, and your overall chance. At the end of the
+                experiment, your total earnings will be paid in cash, privately.</p>
+        </h6><br><br>
+        <h4>Instructions</h4><br>
+        <h6>
+            <p>In today's experiment, there are 9 participants: 1 Assigner and 8 Solvers. The Solvers are divided into Type 1
+                Solvers and Type 2 Solvers. Additionally, each Solver is assigned a color: Green or Blue. All Green Solvers are
+                Type 1, while 2 Blue Solvers are Type 1 and the remaining 2 will be Type 2. Roles are randomly assigned to the
+                participants.</p>
+            <p>The Assigner's task is to assign all eligible Solvers to one of two multiplication activities: Activity A or Activity
+                B. Eligible in this context refers to whether or not a Solver is allowed to participate in one of the two multiplication
+                activities.</p>
+            <p>Type 1 solvers are always allowed to participate in activities while Type 2 solvers are not initially allowed to
+                participate in activities. Type 1 Solvers make decisions on the eligibility to participate in activities of Type 2 solvers.
+                In other words, Type 1 Solvers have the authority to either allow or not allow Type 2 Solvers to participate in the
+                activities</p>
+            <p>Type 1 Solvers are given individual multiplication questions to solve in Activity A, while Type 2 Solvers are given
+                three such questions to complete one Activity A. Each correctly completed activity earns a Solver 0.50 points (half a
+                point).</p>
+            <p>For instance, a Type 1 Solver might be asked to calculate the product of 2 and 3 as part of one Activity A, while a
+                Type 2 solver might be asked to calculate the products of 3 and 5, 7 and 8, and 4 and 9.</p>
+            <p>They can answer these questions for 30 seconds. The number of activities they complete correctly within this time
+                will be multiplied by 0.5 to determine the total points they earn for that round. For example, if a Solver performs 30
+                activities correctly in 30 seconds, the Solver earns 15 points.</p>
+            <p>In Activity B, any Solver is asked to solve individual multiplication questions. Each question is finding the product
+                of two randomly chosen single-digit numbers. Each correctly completed activity earns a Solver 0.50 points (half a
+                point).</p>
+            <p>For example, to complete one Activity B, a Solver might be asked to find the product of 3 and 7. The Solver earns
+                0.25 points (a quarter point) by answering it correctly.</p>
+            <p>Solvers have 30 seconds to answer as many questions as they can. The total earnings for a round are calculated by
+                multiplying the number of correct answers by 0.25. For example, if a Solver completes 16 Activity B correctly
+                within 30 seconds, the Solver will earn 4 points.</p>
+            <p>The Assigner can see a Solver's color but not their Type when making assignments.</p>
+            <p>All Type 1 Solvers are always eligible to participate in Activity A and Activity B. However, there are 2 Type 2
+                solvers who are not initially able to be assigned.</p>
+            <p>The eligibility of Type 2 Solvers is determined by the decision of one of the Type 1 Solvers. At the beginning of
+                each round, Type 1 Solvers choose whether to make Type 2 solvers eligible. The decision of one randomly chosen
+                solver is implemented.</p>
+            <p>At the beginning of each round, each Type 1 Solver is asked the following question: "Do you want to allow the Type
+                2 Solvers to participate in the problem-solving activity?"</p>
+            <p>Once each Type 1 Solver has answered this question, one of them is chosen randomly. The choice made by the
+                randomly chosen Type 1 Solver is implemented.</p>
+            <p>After this is determined, the Assigner must assign all the eligible Solvers to Activity A or Activity B. If the two
+                Type 2 solvers are eligible, then 8 solvers must be assigned. If the two Type 2 Solvers are ineligible, there are only 6
+                Solvers that must be assigned.</p>
+            <p>Note that if the two Blue Solvers are ineligible, all six Solvers are Type 1. If the Two Blue Solvers are eligible, then
+                all the Green Solvers are Type 1, two Blue Solvers are Type 1, and two Blue Solvers are Type 2. The Assigner does
+                not know which of the two eligible Solvers is Type 2.</p>
+            <p>The Assigner's earnings are based on the number of completed Activity A and Activity B. Specifically, the Assigner
+                earns the total number of completed Activity A multiplied by 0.8 plus the total number of completed Activity B
+                multiplied by 0.5, minus the amounts of money given to the solvers for the completed Activity A and Activity B.
+                For example, if 90 Activity A and 30 Activity B are completed, the assigner earns</p>
+            <p>(0.8)(90)+ (0.5)(30)-(0.5)(90)-(0.25)(30)= 34.5 points.</p>
+            <p>The Assigner's earnings will increase with the completion of Activity A and Activity B. However, if the number of
+                Solvers assigned is small, such as 6, then the Assigner's earnings will likely be lower. Assigning Type 2 employees
+                to Task A increases the chance of lowering the number of completed tasks and subsequently reducing the Assigner's
+                earnings.</p>
+        </h6><br><br>
+    <h5>Example 1</h5><br>
+        <h6>
+            <p>The randomly chosen Type 1 Solver decides to make the Type 2 Solvers ineligible to participate in Activities.</p>
+            <p>The Assigner assigns 4 Type 1 Solvers to Activity A, and 2 Type 1 Solvers to Activity B.</p>
+            <p>Note that during assigning to the activity Assigner only can see the Solver’s color, not the Type.</p>
+            <p>If a Solver completes 18 Activity A correctly in the 30 seconds time period, the Solver earns (18)(0.5) = 9 points.</p>
+            <p>If a Solver completes 20 Activity B correctly in the 30 seconds time period, the Solver earns (20)(0.25)= 5 points.</p>
+            <p>Suppose the total correctly completed Activity A and Activity B by Solvers are 50 and 40 respectively. In that case,
+                the Assigner’s round earnings are</p>
+            <p>(0.8*50 + 0.5*40)-(0.5)(50)-(0.25)(40)= 25 points.</p>
+        </h6><br><br>
+    <h5>Example 2</h5><br>
+        <h6>
+            <p>The randomly chosen Type 1 Solver decides to make the Type 2 Solvers eligible to participate in Activities.</p>
+            <p>The Assigner assigns 4 Type 1 Solvers to Activity A, and 4 Type 1 Solvers to Activity B.</p>
+            <p>If a Solver performs 20 Activity A correctly in the 30 seconds time period, the Solver earns (20)(0.5) = 10 points.</p>
+            <p>If a Solver performs 18 Activity B correctly in the 30 seconds time period, the Solver earns (18)(0.25)= 4.5 points.</p>
+            <p>Suppose the total correctly completed Activity A and Activity B by Solvers are 60 and 60. In that case, the
+                Assigner’s round earnings are</p>
+            <p>(0.8*60+ 0.5*60)-(0.5)(60)-(0.25)(60)= 33 points.</p>
+            <p>There will be 30 rounds of the experiment, and one round will be randomly chosen for payment. Points will be
+                converted to dollar amounts for payment.</p>
+            <p>The employer's points will be equivalent to dollars, while each employee's points will be multiplied by 3 to
+                determine the corresponding dollar amounts. For example, if an employer earns 21 points, they will make 21 dollars
+                from the experiment, excluding the show-up fee. If an employer earns 8 points, they will make 24 dollars, excluding
+                the $7 show-up fee.</p>
+            <p>Before we begin the experiment, you will play a practice round. In the practice round, you will play as an Assigner
+                or a Solver, and your role will remain the same in the actual experiment. This is meant for you to familiarize
+                yourselves with the experiment. Choices made in the practice round will be unpaid and will not affect the actual
+                experiment.</p>
+
+        </h6><br>
+    </div>
+    {{ next_button }}
+</div>
+<script>
+    function toggleLanguage() {
+        var englishContent = document.getElementById("englishContent");
+        var spanishContent = document.getElementById("spanishContent");
+
+        englishContent.classList.toggle("active");
+        spanishContent.classList.toggle("active");
+    }
+    
+    function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar");
+            var main = document.getElementById("main");
+            var openSidebarButton = document.getElementById("openSidebarButton");
+
+            if (sidebar.style.width === "40%") {
+                sidebar.style.width = "0";
+                main.style.marginLeft = "0"; /* Set left margin to 0 */
+                openSidebarButton.classList.remove("white");
+            } else {
+                sidebar.style.width = "40%";
+                main.style.marginLeft = "40%"; /* Set left margin to 40% */
+                openSidebarButton.classList.add("white");
+            }
+        }
+</script>
+{{endblock}}

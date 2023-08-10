@@ -1,0 +1,261 @@
+{{block content}}
+<style>
+    body {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        #sidebar {
+            height: 100%;
+            width: 0; /* Set sidebar width to 0 by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #165fa3;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+        }
+        #sidebar a {
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 25px;
+            color: white;
+            display: block;
+            transition: 0.2s;
+        }
+        #sidebar a:hover {
+            color: #f1f1f1;
+        }
+        #main {
+            transition: margin-left 0.3s;
+            padding: 16px;
+            margin-left: 0; /* Set left margin to 0 by default */
+        }
+        .language-toggle {
+            display: none;
+        }
+        .language-toggle.active {
+            display: block;
+        }
+        #toggleButton {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1;
+            color: #165fa3;
+            size : 30px,
+        }
+        #openSidebarButton {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1;
+            font-size: 30px;
+            cursor: pointer;
+            color: #165fa3;
+        }
+        #openSidebarButton.white {
+            color: white;
+        }
+    #txtSearch {
+            background-color: white;
+            border: 2px solid #165fa3;
+            color: black;
+            padding: 10px;
+            border-radius: 5px;
+            width: 300px;
+        }
+
+        #txtSearch::placeholder {
+            color: gray;
+        }
+        #btnSearch {
+            background-color: #165fa3;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #btnSearch:hover {
+            background-color: #165fa3;
+        }
+        table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #165fa3;
+    margin: 20px;
+}
+
+/* Style for table headers */
+th {
+    background-color: #165fa3;
+    text-align: center;
+    padding: 15px;
+    color: white;
+}
+
+/* Style for table data cells */
+td {
+    padding: 5px;
+    border: 2px solid #165fa3;
+    text-align: center;
+    color: white;
+}
+#sidebar p {
+            text-decoration: none;
+            font-size: 25px;
+            color: white;
+            display: block;
+            transition: 0.2s;
+            padding-left: 15px;
+        }
+</style>
+<div id="sidebar">
+    <p>Number of problems to solve:</p>
+    <table style="min-width: 100%;">
+        <tr>
+            <th>  Solver Type  </th>
+            <th>  Activity A  </th>
+            <th>  Activity B  </th>
+        </tr>
+        <tr>
+            <th>Green</th>
+            <th>1</th>
+            <th>1</th>
+        </tr>
+        <tr>
+            <th>Blue Type 1</th>
+            <th>1</th>
+            <th>1</th>
+        </tr>
+        <tr>
+            <th>Blue Type 2</th>
+            <th style="color: yellow;">2</th>
+            <th>1</th>
+        </tr>
+    </table> <br><br>
+    <p>Payoff Table:</p>
+    <table>
+        <tr>
+            <th>Activity Type</th>
+            <th>Solver</th>
+            <th>Assigner</th>
+        </tr>
+        <tr>
+            <td>A</td>
+            <td>0.5</td>
+            <td>0.3</td>
+        </tr>
+        <tr>
+            <td>B</td>
+            <td>0.25</td>
+            <td>0.25</td>
+        </tr>
+        </table>
+    </table></div>
+<div id="main">
+    <div id="openSidebarButton" onclick="toggleSidebar()" style="font-size: 30px;">&#9776; Rules</div>
+    <div id="toggleButton" onclick="toggleLanguage()" style="font-size: 30px;">Aa/অক &#9873;</div>
+    <div id="englishContent" class="language-toggle active">
+        <center><h1>Activity Stage</h1></center>
+        {{if job}}
+        Received Activity : Activity A <br>
+            {{if role in ["b21", "b22"]}}
+            Every 2 Solved Activity will give you 50 Points<br>
+            {{else}}
+            Every Solved Activity will give you 50 Points<br>
+            {{endif}}
+        {{else}}
+        Received Activity : Activity B<br>
+        Every Solved Activity will give you 25 Points<br>
+        {{endif}}
+        Keep answering the following question for 30 seconds. Press "Enter" Key to submit<br>
+    </div>
+    <div id="spanishContent" class="language-toggle">
+        <center><h1>অ্যাক্টিভিটি পর্যায়</h1></center>
+        {{if job}}
+        প্রাপ্ত অ্যাক্টিভিটি : অ্যাক্টিভিটি A<br>
+            {{if role in ["b21", "b22"]}}
+            প্রতি 2টি সমাধান করা অ্যাক্টিভিটি আপনাকে 50 পয়েন্ট দেবে<br>
+            {{else}}
+            প্রতিটি সমাধান করা অ্যাক্টিভিটি আপনাকে 50 পয়েন্ট দেবে<br>
+            {{endif}}
+        {{else}}
+        প্রাপ্ত অ্যাক্টিভিটি : অ্যাক্টিভিটি B<br>
+        প্রতিটি সমাধান করা অ্যাক্টিভিটি আপনাকে 25 পয়েন্ট দেবে<br>
+        {{endif}}
+        30 সেকেন্ডের জন্য নিম্নলিখিত প্রশ্নের উত্তর দিতে থাকুন। জমা দিতে "Enter" Key চাপুন<br>
+    </div>
+    <br>
+<div id = "numbers" style="font-size: 30px;">
+    {{num1}} * {{num2}} = ?
+</div>
+
+<input type="text" id="txtSearch" onkeypress="return searchKeyPress(event);" style="width: 100%;" placeholder="Answer"/>
+<input type="button" id="btnSearch" Value="Search" onclick="submit_ans()" hidden/>
+
+
+
+    {{ include_sibling 'instructions.html' }}
+
+{{ endblock }}
+
+{% block scripts %}
+
+<script>
+    function submit_ans(){
+        ans = parseFloat(document.getElementById("txtSearch").value)
+        liveSend({"type": "ans", "data":{"ans" : ans}})
+    }
+
+    function liveRecv(data) {
+        let numbers = document.getElementById("numbers")
+        if (data["type"] == "reload"){
+            numbers.innerHTML = data["data"]['num1'] + ' * ' + data["data"]['num2'] + " = ? ";
+    }
+  }
+
+  function searchKeyPress(e)
+{
+    // look for window.event in case event isn't passed in
+    e = e || window.event;
+    if (e.keyCode == 13)
+    {
+        document.getElementById('btnSearch').click();
+        document.getElementById("txtSearch").value = "";
+        return false;
+    }
+    return true;
+}
+function toggleLanguage() {
+    var englishContent = document.getElementById("englishContent");
+    var spanishContent = document.getElementById("spanishContent");
+
+    englishContent.classList.toggle("active");
+    spanishContent.classList.toggle("active");
+}
+    
+function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar");
+            var main = document.getElementById("main");
+            var openSidebarButton = document.getElementById("openSidebarButton");
+
+            if (sidebar.style.width === "40%") {
+                sidebar.style.width = "0";
+                main.style.marginLeft = "0"; /* Set left margin to 0 */
+                openSidebarButton.classList.remove("white");
+            } else {
+                sidebar.style.width = "40%";
+                main.style.marginLeft = "40%"; /* Set left margin to 40% */
+                openSidebarButton.classList.add("white");
+            }
+        }
+
+</script>
+
+{% endblock %}

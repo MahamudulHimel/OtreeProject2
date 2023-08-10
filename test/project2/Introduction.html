@@ -1,0 +1,199 @@
+
+{{block content}}
+<style>
+    body {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        #sidebar {
+            height: 100%;
+            width: 0; /* Set sidebar width to 0 by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #165fa3;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+        }
+        #sidebar a {
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 25px;
+            color: white;
+            display: block;
+            transition: 0.2s;
+        }
+        #sidebar a:hover {
+            color: #f1f1f1;
+        }
+        #sidebar p {
+            text-decoration: none;
+            font-size: 25px;
+            color: white;
+            display: block;
+            transition: 0.2s;
+            padding-left: 15px;
+        }
+        #main {
+            transition: margin-left 0.3s;
+            padding: 16px;
+            margin-left: 0; /* Set left margin to 0 by default */
+        }
+        .language-toggle {
+            display: none;
+        }
+        .language-toggle.active {
+            display: block;
+        }
+        #toggleButton {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1;
+            color: #165fa3;
+            size : 30px,
+        }
+        #openSidebarButton {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1;
+            font-size: 30px;
+            cursor: pointer;
+            color: #165fa3;
+        }
+        #openSidebarButton.white {
+            color: white;
+        }
+        table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #165fa3;
+    margin: 20px;
+}
+
+/* Style for table headers */
+th {
+    background-color: #165fa3;
+    text-align: center;
+    padding: 15px;
+    color: white;
+}
+
+/* Style for table data cells */
+td {
+    padding: 5px;
+    border: 2px solid #165fa3;
+    text-align: center;
+    color: white;
+}
+</style>
+<div id="sidebar">
+    <p>Number of problems to solve:</p>
+    <table style="min-width: 100%;">
+        <tr>
+            <th>  Solver Type  </th>
+            <th>  Activity A  </th>
+            <th>  Activity B  </th>
+        </tr>
+        <tr>
+            <th>Green</th>
+            <th>1</th>
+            <th>1</th>
+        </tr>
+        <tr>
+            <th>Blue Type 1</th>
+            <th>1</th>
+            <th>1</th>
+        </tr>
+        <tr>
+            <th>Blue Type 2</th>
+            <th style="color: yellow;">2</th>
+            <th>1</th>
+        </tr>
+    </table> <br><br>
+    <p>Payoff Table:</p>
+    <table>
+        <tr>
+            <th>Activity Type</th>
+            <th>Solver</th>
+            <th>Assigner</th>
+        </tr>
+        <tr>
+            <td>A</td>
+            <td>0.5</td>
+            <td>0.3</td>
+        </tr>
+        <tr>
+            <td>B</td>
+            <td>0.25</td>
+            <td>0.25</td>
+        </tr>
+        </table>
+    </table></div>
+<div id="main">
+    <div id="openSidebarButton" onclick="toggleSidebar()" style="font-size: 30px;">&#9776; Rules</div>
+    <div id="toggleButton" onclick="toggleLanguage()" style="font-size: 30px;">Aa/অক &#9873;</div>
+    <div id="englishContent" class="language-toggle active">
+        <center><h1>Round Number : {{round_number}}</h1></center>
+        Your Role :
+        {{if role in ['g1','g2','g3','g4']}}
+            Green Solver
+        {{elif role in ['b11','b12']}}
+            Blue Solver Type1
+        {{elif role in ['b21','b22']}}
+            Blue Solver Type2
+        {{else}}
+            Assigner
+        {{endif}}
+        <br>
+        Total Points : {{ points }}
+    </div>
+    <div id="spanishContent" class="language-toggle">
+        <center><h1>রাউন্ড নম্বর : {{round_number}}</h1></center>
+        আপনার রোল (Role) :
+        {{if role in ['g1','g2','g3','g4']}}
+        সবুজ সল্ভার
+        {{elif role in ['b11','b12']}}
+        নীল সল্ভার টাইপ 1
+        {{elif role in ['b21','b22']}}
+        নীল সল্ভার টাইপ 2
+        {{else}}
+            অ্যাসাইনার
+        {{endif}}
+        <br>
+        মোট পয়েন্ট : {{ points }}
+    </div>
+    <br>
+    {{ next_button }}
+</div>
+<script>
+    function toggleLanguage() {
+        var englishContent = document.getElementById("englishContent");
+        var spanishContent = document.getElementById("spanishContent");
+
+        englishContent.classList.toggle("active");
+        spanishContent.classList.toggle("active");
+    }
+    
+    function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar");
+            var main = document.getElementById("main");
+            var openSidebarButton = document.getElementById("openSidebarButton");
+
+            if (sidebar.style.width === "40%") {
+                sidebar.style.width = "0";
+                main.style.marginLeft = "0"; /* Set left margin to 0 */
+                openSidebarButton.classList.remove("white");
+            } else {
+                sidebar.style.width = "40%";
+                main.style.marginLeft = "40%"; /* Set left margin to 40% */
+                openSidebarButton.classList.add("white");
+            }
+        }
+</script>
+{{endblock}}
