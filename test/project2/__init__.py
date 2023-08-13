@@ -4,7 +4,7 @@ from random import choice , randint, sample
 doc = """ """
 
 class C(BaseConstants):
-    NAME_IN_URL = ''
+    NAME_IN_URL = 'Project2'
     PLAYERS_PER_GROUP = 9
     NUM_ROUNDS = 30
 
@@ -28,9 +28,16 @@ class C(BaseConstants):
     JOB_B_ASSIGNER_MUL = 0.5 - JOB_B_SOLVER_MUL
 
     TYPE_2_JOB_A_TASK_COUNT_PER_ROUND = 2
+
     USE_POINTS = True
 
-    payoff = cu(100)
+    payoff = 50
+
+    money = cu(1)
+
+    participation_fee = 200
+
+    payoff_round = randint(1,NUM_ROUNDS)
 
 
 class Subsession(BaseSubsession):
@@ -103,6 +110,8 @@ class Player(BasePlayer):
 
     lang_eng = models.BooleanField(initial=True)
 
+    points = models.FloatField(initial=0)
+
 class instructions(Page):
     def vars_for_template(player):
         return dict(language = player.lang_eng)
@@ -118,7 +127,7 @@ class instructions_test(Page):
 
 class Introduction(Page):
     def vars_for_template(player):
-        sum1 = sum(p.payoff for p in player.in_all_rounds())
+        sum1 = sum(p.points for p in player.in_all_rounds())
         return dict(role=player.role, points = sum1, round_number= player.round_number)
 
 class VoteForType2(Page):
@@ -200,27 +209,28 @@ class WaitJob(WaitPage):
                 assigner = player
             elif player.job_A:
                 if player.role in ["b21", "b22"]:
-                    player.payoff = C.JOB_A_SOLVER_MUL * player.job_count//2 * C.payoff
+                    player.points = C.JOB_A_SOLVER_MUL * player.job_count//2 * C.payoff
                     job_A_count+=player.job_count
                 else:
-                    player.payoff = C.JOB_A_SOLVER_MUL * player.job_count * C.payoff
+                    player.points = C.JOB_A_SOLVER_MUL * player.job_count * C.payoff
                     job_A_count+=player.job_count
             else:
-                player.payoff = C.JOB_B_SOLVER_MUL * player.job_count * C.payoff
+                player.points = C.JOB_B_SOLVER_MUL * player.job_count * C.payoff
                 job_B_count+=player.job_count
 
-        assigner.payoff = (C.JOB_A_ASSIGNER_MUL * job_A_count + C.JOB_B_ASSIGNER_MUL*job_B_count) * C.payoff
+        assigner.points = (C.JOB_A_ASSIGNER_MUL * job_A_count + C.JOB_B_ASSIGNER_MUL*job_B_count) * C.payoff
 
 class Results(Page):
     def vars_for_template(player):
-        return dict(points = player.payoff, job = player.job_A, allowed = player.allowed, role = player.role)
+        return dict(points = player.points, job = player.job_A, allowed = player.allowed, role = player.role)
 
 class FinalResults(Page):
     def vars_for_template(player):
-        sum1 = sum(p.payoff for p in player.in_all_rounds())
-        return dict(points = sum)
+        player.payoff = player.in_round(C.payoff_round).points * C.money
+        total = C.participation_fee + payoff
+        return dict(points = player.payoff, participation_fee = C.participation_fee, round= C.payoff_round, total = total)
     def is_displayed(player):
-        return player.round_number == 30
+        return player.round_number == C.NUM_ROUNDS
 
 page_sequence = [instructions,Introduction,VoteForType2,VotingWait, JobAssign, WaitJobAssign, JobPage, WaitJob,Results,FinalResults]
         
