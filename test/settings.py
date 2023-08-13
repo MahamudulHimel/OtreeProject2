@@ -45,10 +45,13 @@ ADMIN_USERNAME = 'admin'
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 
 DEMO_PAGE_INTRO_HTML = """
-Here are some oTree games.
 """
 
 
 SECRET_KEY = '2664064226354'
 
 INSTALLED_APPS = ['otree']
+
+DEBUG = False
+
+ALLOWED_HOSTS = ['192.168.2.105']

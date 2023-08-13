@@ -6,7 +6,7 @@ doc = """ """
 class C(BaseConstants):
     NAME_IN_URL = 'Project2'
     PLAYERS_PER_GROUP = 9
-    NUM_ROUNDS = 30
+    NUM_ROUNDS = 2
 
     roles = ["g1", "g2", "g3", "g4", "b11", "b12", "b21", "b22"]
 
@@ -227,7 +227,7 @@ class Results(Page):
 class FinalResults(Page):
     def vars_for_template(player):
         player.payoff = player.in_round(C.payoff_round).points * C.money
-        total = C.participation_fee + payoff
+        total = C.participation_fee + player.payoff
         return dict(points = player.payoff, participation_fee = C.participation_fee, round= C.payoff_round, total = total)
     def is_displayed(player):
         return player.round_number == C.NUM_ROUNDS
