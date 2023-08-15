@@ -232,5 +232,15 @@ class FinalResults(Page):
     def is_displayed(player):
         return player.round_number == C.NUM_ROUNDS
 
-page_sequence = [instructions,Introduction,VoteForType2,VotingWait, JobAssign, WaitJobAssign, JobPage, WaitJob,Results,FinalResults]
+class Questions(Page):
+    def is_displayed(player):
+        return player.round_number == 1
+
+class InstructionsWait(WaitPage):
+    title_text = "Jobs ongoing"
+    body_text = "Plese wait for all Solvers to finish their Jobs."
+    def is_displayed(player):
+        return player.round_number == 1
+
+page_sequence = [instructions,Questions,Introduction,VoteForType2,VotingWait, JobAssign, WaitJobAssign, JobPage, WaitJob,Results,FinalResults]
         

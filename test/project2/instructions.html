@@ -17,7 +17,11 @@
             overflow-x: hidden;
             transition: 0.3s;
             padding-top: 60px;
+            padding-bottom: 15px;
         }
+        #sidebar::-webkit-scrollbar {
+        display: none;
+}
         #sidebar p {
             text-decoration: none;
             font-size: 25px;
@@ -52,7 +56,7 @@
         #openSidebarButton {
             position: fixed;
             top: 10px;
-            left: 10px;
+            left: 40px;
             z-index: 1;
             font-size: 30px;
             cursor: pointer;
@@ -76,66 +80,52 @@
 }
 
 /* Style for table headers */
-th {
-    background-color: #165fa3;
-    text-align: center;
-    padding: 15px;
-    color: white;
-}
-
-/* Style for table data cells */
-td {
-    padding: 5px;
-    border: 2px solid #165fa3;
-    text-align: center;
-    color: white;
-}
 </style>
 <div id="sidebar">
-    <p>Number of problems to solve:</p>
-    <table style="min-width: 100%;">
-        <tr>
-            <th>  Solver Type  </th>
-            <th>  Activity A  </th>
-            <th>  Activity B  </th>
-        </tr>
-        <tr>
-            <th>Green</th>
-            <th>1</th>
-            <th>1</th>
-        </tr>
-        <tr>
-            <th>Blue Type 1</th>
-            <th>1</th>
-            <th>1</th>
-        </tr>
-        <tr>
-            <th>Blue Type 2</th>
-            <th style="color: yellow;">2</th>
-            <th>1</th>
-        </tr>
-    </table> <br><br>
-    <p>Payoff Table:</p>
-    <table>
-        <tr>
-            <th>Activity Type</th>
-            <th>Solver</th>
-            <th>Assigner</th>
-        </tr>
-        <tr>
-            <td>A</td>
-            <td>0.5</td>
-            <td>0.3</td>
-        </tr>
-        <tr>
-            <td>B</td>
-            <td>0.25</td>
-            <td>0.25</td>
-        </tr>
-        </table>
-    </table></div>
+    <p><list>
+            <li style="color:white">There are one Assigner, 4 Green Solvers, and 4 Blue Solvers in the experiment. And Solvers are divided into  Type 1 Solvers  and Type 2 Solvers</li>
+            <li style="color:white">All Green Solvers  and 2 randomly selected Blue Solvers are Type 1 Solvers</li>
+            <li style="color:white">Remaining 2 Blue Solvers  are Type 2 Solvers</li>
+            <li style="color:white">
+                These roles are randomly assigned, but the same in every round
+            </li>
+            <li style="color:white">
+                Eligible Solvers participate in multiplication activities for 30 seconds in each round
+            </li>
+            <li style="color:white">
+                Type 1 Solvers  are always eligible to participate in multiplication activities 
+            </li>
+            <li style="color:white">
+                Each Type 1 Solver decides whether to make the Type 2 solvers eligible to participate in the multiplication activities
+            </li>
+            <li style="color:white">
+                The decision of one randomly chosen Type 1 Solver is implemented
+            </li>
+            <li style="color:white">
+                The assigner  assigns eligible Solvers to Activity A or Activity  B
+            </li>
+            <li style="color:white">
+                Assigned solvers solve multiplication problems (Activity A or Activity B) for 30 seconds in each round
+            </li>
+            <li style="color:white">
+                For Type 1 solvers in Activity A each Unit of  activity involves finding the product of two randomly chosen single-digit numbers and Solvers earn 0.5 points (half a point) for each unit of activity
+            </li>
+            <li style="color:white">
+                For Type 2 solvers in Activity A each Unit of activity involves finding the product of two randomly chosen single-digit  numbers three times and earn 0.5 points (half a point) for each Unit of activity
+            </li>
+            <li style="color:white">
+                For Type 1 solvers in Activity B each Unit of activity involves finding the product of two randomly chosen single-digit  numbers and earn 0.25  (a quarter point) points for each Unit of activity
+            </li>
+            <li style="color:white">
+                For Type 2 solvers in Activity B each Unit of  activity involves finding the product of two randomly chosen single-digit numbers and earn 0.25 points (a quarter point) for each Unit of activity
+            </li>
+            <li style="color:white">
+                During payment, the assigner's points are multiplied by 30 , while each solver’s points are multiplied by 50 to determine the corresponding BDT amounts.
+            </li>
+        </list>
+    </p></div>
 <div id="main">
-    <div id="openSidebarButton" onclick="toggleSidebar()" style="font-size: 30px;">&#9776; Rules</div>
+    <div id="openSidebarButton" onclick="toggleSidebar()" style="font-size: 30px;">Summary</div>
     <div id="toggleButton" onclick="toggleLanguage()" style="font-size: 30px;">Aa/অক &#9873;</div>
     <div id="spanishContent" class="language-toggle">
         <center><h3>পরীক্ষার নির্দেশাবলী</h3></center><br>
@@ -313,10 +303,14 @@ td {
 
             if (sidebar.style.width === "40%") {
                 sidebar.style.width = "0";
+                sidebar.style.paddingLeft = "0px"
+                sidebar.style.paddingRight = "0px"
                 main.style.marginLeft = "0"; /* Set left margin to 0 */
                 openSidebarButton.classList.remove("white");
             } else {
                 sidebar.style.width = "40%";
+                sidebar.style.paddingLeft = "15px"
+                sidebar.style.paddingRight = "15px"
                 main.style.marginLeft = "40%"; /* Set left margin to 40% */
                 openSidebarButton.classList.add("white");
             }

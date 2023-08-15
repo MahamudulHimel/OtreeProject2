@@ -1,0 +1,301 @@
+{{block content}}
+<style>
+    body {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        #sidebar {
+            height: 100%;
+            width: 0; /* Set sidebar width to 0 by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #165fa3;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+        }
+        #sidebar a {
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 25px;
+            color: white;
+            display: block;
+            transition: 0.2s;
+        }
+        #sidebar a:hover {
+            color: #f1f1f1;
+        }
+        #main {
+            transition: margin-left 0.3s;
+            padding: 16px;
+            margin-left: 0; /* Set left margin to 0 by default */
+        }
+        .language-toggle {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        #toggleButton {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1;
+            color: #165fa3;
+            size : 30px,
+        }
+        #err {
+            position: fixed;
+            bottom: 30px;
+            right: 10px;
+            z-index: 1;
+            color: red;
+            size : 30px,
+        }
+        #openSidebarButton {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1;
+            font-size: 30px;
+            cursor: pointer;
+            color: #165fa3;
+        }
+        #openSidebarButton.white {
+            color: white;
+        }
+        table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #165fa3;
+    margin: 20px;
+}
+
+/* Style for table headers */
+th {
+    background-color: #165fa3;
+    text-align: center;
+    padding: 15px;
+    color: white;
+}
+
+/* Style for table data cells */
+td {
+    padding: 5px;
+    border: 2px solid #165fa3;
+    text-align: center;
+    color: white;
+}
+#sidebar p {
+            text-decoration: none;
+            font-size: 25px;
+            color: white;
+            display: block;
+            transition: 0.2s;
+            padding-left: 15px;
+        }
+</style>
+<div id="sidebar">
+    <p>Number of problems to solve:</p>
+    <table style="min-width: 100%;">
+        <tr>
+            <th>  Solver Type  </th>
+            <th>  Activity A  </th>
+            <th>  Activity B  </th>
+        </tr>
+        <tr>
+            <th>Green</th>
+            <th>1</th>
+            <th>1</th>
+        </tr>
+        <tr>
+            <th>Blue Type 1</th>
+            <th>1</th>
+            <th>1</th>
+        </tr>
+        <tr>
+            <th>Blue Type 2</th>
+            <th style="color: yellow;">2</th>
+            <th>1</th>
+        </tr>
+    </table> <br><br>
+    <p>Payoff Table:</p>
+    <table>
+        <tr>
+            <th>Activity Type</th>
+            <th>Solver</th>
+            <th>Assigner</th>
+        </tr>
+        <tr>
+            <td>A</td>
+            <td>0.5</td>
+            <td>0.3</td>
+        </tr>
+        <tr>
+            <td>B</td>
+            <td>0.25</td>
+            <td>0.25</td>
+        </tr>
+        </table>
+    </table></div>
+<div id="main">
+    <div id="openSidebarButton" onclick="toggleSidebar()" style="font-size: 30px;">&#9776; Rules</div>
+    <div id="toggleButton" onclick="toggleLanguage()" style="font-size: 30px;">Aa/অক &#9873;</div>
+    <div id = "err" style="display: none;">
+        <p>Wrong answer(s) at:
+        <div id = "err1" style="display: none;">1</div>
+        <div id = "err2" style="display: none;">2</div>
+        <div id = "err3" style="display: none;">3</div>
+        <div id = "err4" style="display: none;">4</div>
+        <div id = "err5" style="display: none;">5</div>
+        <div id = "err6" style="display: none;">6</div>
+    </p>
+    </div>
+    <div id="englishContent" class="language-toggle active">
+        <center><h1>Test Questions</h1></center>
+    </div>
+    <div id="spanishContent" class="language-toggle">
+        <center><h1>রাউন্ড সংক্ষেপিত</h1></center>
+    </div>
+
+    <h3 class="language-toggle active"><p>Please answer the following questions to ensure you completely understand the experiment.</p><h3>
+    <h3 class="language-toggle">bb</h3>
+    <form id = "myForm">
+    <h4 class = "language-toggle active"><p>1.  Suppose you are a Type 1 solver in Activity A. In that case, each Unit of Activity involves -</p></h4>
+    <h4 class="language-toggle">bb</h4>
+
+        <input type = "radio" name="1" value = True id = "1.1" onchange="checkEligibility()"/>
+        <label for = "1.1" > <p class="language-toggle active">Finding the product of two randomly chosen single-digit numbers (e.g.: 9*7)</p><p class="language-toggle">bb</p></label><br>
+        <input type = "radio" name="1" value = False id = "1.2" onchange="checkEligibility()"/>
+        <label for = "1.2"> <p class="language-toggle active">Finding the product of two randomly chosen double-digit numbers (e.g.: 27*49)</p><p class="language-toggle">bb</p></label><br>
+        <input type = "radio" name="1" value = False id = "1.3" onchange="checkEligibility()"/>
+        <label for = "1.3"> <p class="language-toggle active">Finding the product of two randomly chosen single-digit numbers two times (e.g.: 9*7, and 4 * 3) </p><p class="language-toggle">bb</p></label><br>
+
+        <h4 class = "language-toggle active"><br><p>2.   Suppose you are a Type 2 solver in Activity A. In that case, each Unit of Activity involves -</p></h4>
+        <h4 class="language-toggle">bb</h4>
+
+        <input type = "radio" name="2" value = True id = "2.1" onchange="checkEligibility()"/>
+        <label for = "2.1"> <p class="language-toggle active">Finding the product of two randomly chosen single-digit numbers (e.g.: 4*9)</p><p class="language-toggle">bb</p></label><br>
+        <input type = "radio" name="2" value = False id = "2.2" onchange="checkEligibility()"/>
+        <label for = "2.2"> <p class="language-toggle active">Finding the product of two randomly chosen double-digit numbers (e.g.: 43*12)</p><p class="language-toggle">bb</p></label><br>
+        <input type = "radio" name="2" value = False id = "2.3" onchange="checkEligibility()"/>
+        <label for = "2.3"> <p class="language-toggle active">Finding the product of two randomly chosen single-digit numbers two times (e.g.: 8*5,  and 9 * 6)</p><p class="language-toggle">bb</p></label><br>
+
+        <h4 class = "language-toggle active"><br><p>3.   Suppose you are a Type 1 solver in Activity B. In that case, each Unit of Activity involves - </p></h4>
+        <h4 class="language-toggle">bb</h4>
+
+        <input type = "radio" name="3" value = True id = "3.1" onchange="checkEligibility()"/>
+        <label for = "3.1"> <p class="language-toggle active">Finding the product of two randomly chosen single-digit numbers (e.g.: 7*4)</p><p class="language-toggle">bb</p></label><br>
+        <input type = "radio" name="3" value = False id = "3.2" onchange="checkEligibility()"/>
+        <label for = "3.2"> <p class="language-toggle active">Finding the product of two randomly chosen double-digit numbers (e.g.: 27*49)</p><p class="language-toggle">bb</p></label><br>
+        <input type = "radio" name="3" value = False id = "3.3" onchange="checkEligibility()"/>
+        <label for = "3.3"> <p class="language-toggle active">Finding the product of two randomly chosen single-digit numbers two times (e.g.: 7*4, and 8 * 6) </p><p class="language-toggle">bb</p></label><br>
+
+        <h4 class = "language-toggle active"><br><p>4.  Suppose you are a Type 2 solver in Activity B. In that case, each Unit of Activity involves   -</p></h4>
+        <h4 class="language-toggle">bb</h4>
+
+        <input type = "radio" name="4" value = True id = "4.1" onchange="checkEligibility()"/>
+        <label for = "4.1"> <p class="language-toggle active">Finding the product of two randomly chosen single-digit numbers (e.g.: 6*7)</p><p class="language-toggle">bb</p></label><br>
+        <input type = "radio" name="4" value = False id = "4.2" onchange="checkEligibility()"/>
+        <label for = "4.2"> <p class="language-toggle active">Finding the product of two randomly chosen double-digit numbers (e.g.: 34*25)</p><p class="language-toggle">bb</p></label><br>
+        <input type = "radio" name="4" value = False id = "4.3" onchange="checkEligibility()"/>
+        <label for = "4.3"> <p class="language-toggle active">Finding the product of two randomly chosen single-digit numbers two times (e.g.: 9*7, and 4 * 3)</p><p class="language-toggle">bb</p></label><br>
+
+        <h4 class = "language-toggle active"><br><p>5.  If you complete 10 Units in Activity A correctly in a round, you earn</p></h4>
+        <h4 class="language-toggle">bb</h4>
+
+        <input type = "radio" name="5" value = True id = "5.1" onchange="checkEligibility()"/>
+        <label for = "5.1"> <p class="language-toggle active" >BDT 100</p><p class="language-toggle">bb</p></label><br>
+        <input type = "radio" name="5" value = False id = "5.2" onchange="checkEligibility()"/>
+        <label for = "5.2"> <p class="language-toggle active">BDT 200</p><p class="language-toggle">bb</p></label><br>
+        <input type = "radio" name="5" value = False id = "5.3" onchange="checkEligibility()"/>
+        <label for = "5.3"> <p class="language-toggle active">BDT 300</p><p class="language-toggle">bb</p></label><br>
+
+        <h4 class = "language-toggle active"><br><p>6.  If you complete 16 Units in Activity B correctly in a round, you earn</p></h4>
+        <h4 class="language-toggle">bb</h4>
+
+        <input type = "radio" name="6" value = True id = "6.1" onchange="checkEligibility()"/>
+        <label for = "6.1"> <p class="language-toggle active">BDT 80</p><p class="language-toggle">bb</p></label><br>
+        <input type = "radio" name="6" value = False id = "6.2" onchange="checkEligibility()"/>
+        <label for = "6.2"> <p class="language-toggle active">BDT 100</p><p class="language-toggle">bb</p></label><br>
+        <input type = "radio" name="6" value = False id = "6.3" onchange="checkEligibility()"/>
+        <label for = "6.3"> <p class="language-toggle active">BDT 200 </p><p class="language-toggle">bb</p></label><br>
+
+        <button onclick="handleButtonClick()" class="btn btn-primary btn-large" style="display: none;" id = "submitButton">aaaa</button>
+    </form>
+    <br>
+    <br>
+
+
+</div>
+<script>
+    function toggleLanguage() {
+        var c1 = document.querySelectorAll(".language-toggle.active");
+        var c2 = document.querySelectorAll(".language-toggle:not(.active)");
+        for (i in c1){
+            c1[i].classList.remove("active");
+            c2[i].classList.add("active");
+        }
+    }
+    
+    function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar");
+            var main = document.getElementById("main");
+            var openSidebarButton = document.getElementById("openSidebarButton");
+
+            if (sidebar.style.width === "100%") {
+                sidebar.style.width = "0";
+                main.style.marginLeft = "0"; /* Set left margin to 0 */
+                openSidebarButton.classList.remove("white");
+            } else {
+                sidebar.style.width = "100%";
+                main.style.marginLeft = "100%"; /* Set left margin to 40% */
+                openSidebarButton.classList.add("white");
+            }
+        }
+    
+    function checkEligibility(){
+    // Access the form element
+    // Access the submit button
+    const submitButton = document.getElementById("submitButton");
+
+    // Add a change event listener to the radio buttons
+    // Check if the "female" radio button is selected
+    const ans1 = document.getElementById("1.1");
+    const ans2 = document.getElementById("2.3");
+    const ans3 = document.getElementById("3.1");
+    const ans4 = document.getElementById("4.1");
+    const ans5 = document.getElementById("5.1");
+    const ans6 = document.getElementById("6.1");
+
+    if ((ans1.checked) && (ans2.checked) && (ans3.checked) && (ans4.checked) && (ans5.checked) && (ans6.checked)) {
+        // Show the submit button
+        submitButton.style.display = "block";
+        document.getElementById("err").style.display = "none"
+    } else {
+        // Hide the submit button
+        submitButton.style.display = "none";
+        document.getElementById("err").style.display = "block"
+    
+    if (!(ans1.checked)) document.getElementById("err1").style.display = "block";
+    else document.getElementById("err1").style.display = "none";
+    if (!(ans2.checked)) document.getElementById("err2").style.display = "block";
+    else document.getElementById("err2").style.display = "none";
+    if (!(ans3.checked)) document.getElementById("err3").style.display = "block";
+    else document.getElementById("err3").style.display = "none";
+    if (!(ans4.checked)) document.getElementById("err4").style.display = "block";
+    else document.getElementById("err4").style.display = "none";
+    if (!(ans5.checked)) document.getElementById("err5").style.display = "block";
+    else document.getElementById("err5").style.display = "none";
+    if (!(ans6.checked)) document.getElementById("err6").style.display = "block";
+    else document.getElementById("err6").style.display = "none";
+    }
+}
+
+
+</script>
+{{endblock}}
