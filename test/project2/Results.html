@@ -44,29 +44,18 @@
             {{ else }}
             Was not allwed by Type-1 <br>
             {{endif}}
-        </h1></center>
         {{endif}}
-        <p>Following table shows average earnings of solvers by colors</p>
+    </h1></center>
+        <h3>
         <table class = "styled-table">
+            <thead>
             <tr>
                 <th>Color</th>
-                <th>Average Earnings</th>
-            </tr>
-            <tr>
-                <td style="color: green;">Green</td>
-                <td>
-                </td>
-            </tr>
-            <tr>
-                <td style="color: green;">Blue</td>
-            </tr>
-        <p>Following table shows information of all allowed solvers</p>
-        <table class = "styled-table">
-            <tr>
-                <th>Color</th>
-                <th>Was Allowed</th>
+                <th>Activity Type</th>
                 <th>Earnings</th>
             </tr>
+            </thead>
+            <tbody>
             {% for p in subsession.get_players %}
             {{if p.role != "a" and p.allowed}}
             <tr>
@@ -80,7 +69,9 @@
             </tr>
             {{endif}}
             {% endfor %}
+            </tbody>
             </table>
+        </h3>
     </div>
     <div id="spanishContent" class="language-toggle">
         <center><h1>রাউন্ড সংক্ষেপিত</h1></center>

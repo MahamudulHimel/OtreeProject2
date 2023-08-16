@@ -41,11 +41,28 @@ class C(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    def get_avg(s):
+    def get_avg_blue(s):
+        b_sum = 0
+        b_count = 0
         for p in s.get_players():
-            if p.role == "b":
+            if p.role in ["b12",'b11', 'b22', 'b21']:
+                if p.allowed:
+                    b_sum += p.points
+                    b_count += 1
+        return b_sum/b_count
+
+    def get_avg_green(s):
+        g_count = 0
+        g_sum = 0
+        for p in s.get_players():
+            if p.role in ["b12",'b11', 'b22', 'b21']:
                 pass
-    pass
+            elif p.role == "a":
+                pass
+            else:
+                g_count+=1
+                g_sum += g.points
+        return g_sum/g_count
 
 
 class Group(BaseGroup):
