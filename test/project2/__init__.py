@@ -253,7 +253,7 @@ class WaitJob(WaitPage):
 
 class Results(Page):
     def vars_for_template(player):
-        return dict(points = player.points, job = player.job_A, allowed = player.allowed, role = player.role)
+        return dict(points = player.points, job = player.job_A, allowed = player.allowed, role = player.role, rand = sample([0,1,2,3,4,5,6,7,8], 8))
 
 class FinalResults(Page):
     def vars_for_template(player):
