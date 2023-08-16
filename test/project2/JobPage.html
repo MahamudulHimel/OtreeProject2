@@ -27,14 +27,17 @@
         
 </style>
     <div id="englishContent" class="language-toggle active">
-        <center><h1>Activity Stage</h1>
+        <center><h1>Activity Stage</h1></center> <br>
+            
         {{if job}}
-        <h2>Received Activity : <img src="https://i.imgur.com/k3TCN23.png" height = '50px'/> <br>
+        <h2>Received Activity :  <img src="https://i.imgur.com/k3TCN23.png" height = '50px'/></h2>
         {{else}}
-        Received Activity : <img src = "https://i.imgur.com/vtuWLsY.png" height = '50px'/><br>
+        <h2>Received Activity :  <img src = "https://i.imgur.com/vtuWLsY.png" height = '50px'/></h2> 
         {{endif}}
-    </h2></center>
-        Keep answering the following question for 30 seconds. Press "Enter" Key to submit<br>
+        <div id="correct_ans" style="font-size: 30px; display: block;">
+            Correct answer count: {{correct}}
+        </div>
+    
     </div>
     <div id="spanishContent" class="language-toggle">
         <center><h1>অ্যাক্টিভিটি পর্যায়</h1></center>
@@ -52,12 +55,13 @@
         30 সেকেন্ডের জন্য নিম্নলিখিত প্রশ্নের উত্তর দিতে থাকুন। জমা দিতে "Enter" Key চাপুন<br>
     </div>
     <br>
-<div id = "numbers" style="font-size: 30px; display: block; margin-left: 40%;">
+<div id = "numbers" style="font-size: 30px; display: block;margin-left: 40%;">
     {{num1}} * {{num2}} = ?
 </div>
 <br>
-
+Press "Enter" Key to submit
 <input type="text" id="txtSearch" onkeypress="return searchKeyPress(event);" style="width: 100%;" placeholder="Answer"/>
+
 <input type="button" id="btnSearch" Value="Search" onclick="submit_ans()" hidden/>
 
 
@@ -75,8 +79,10 @@
 
     function liveRecv(data) {
         let numbers = document.getElementById("numbers")
+        let correct_ans = document.getElementById("correct_ans")
         if (data["type"] == "reload"){
             numbers.innerHTML = data["data"]['num1'] + ' * ' + data["data"]['num2'] + " = ? ";
+            correct_ans.innerHTML = "Correct answer count: " + data["data"]["correct"]
     }
   }
 

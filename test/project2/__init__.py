@@ -6,7 +6,7 @@ doc = """ """
 class C(BaseConstants):
     NAME_IN_URL = 'Project2'
     PLAYERS_PER_GROUP = 9
-    NUM_ROUNDS = 2
+    NUM_ROUNDS = 20
 
     roles = ["g1", "g2", "g3", "g4", "b11", "b12", "b21", "b22"]
 
@@ -41,6 +41,10 @@ class C(BaseConstants):
 
 
 class Subsession(BaseSubsession):
+    def get_avg(s):
+        for p in s.get_players():
+            if p.role == "b":
+                pass
     pass
 
 
@@ -173,15 +177,15 @@ class WaitJobAssign(WaitPage):
         while i < 8:
             p = group.get_player_by_role(C.roles[i])
             p.job_A = array[i] if array[i] != None else False
-            p.num1 = randint(1,10)
-            p.num2 = randint(1,10)
+            p.num1 = randint(1, 9)
+            p.num2 = choice([2, 4, 6, 7, 8, 9, 16, 32, 5, 25, 11, 22, 33, 44, 55, 99, 15, 35, 45, 65, 75, 85, 95])
             i+=1
 
 class JobPage(Page):
     timeout_seconds = 30
 
     def vars_for_template(player):
-        return dict(num1=player.num1, num2=player.num2, job=player.job_A, role=player.role)
+        return dict(num1=player.num1, num2=player.num2, job=player.job_A, role=player.role, correct = player.job_count)
 
     def is_displayed(player):
         return (not (player.role == "a")) and player.allowed
@@ -195,6 +199,8 @@ class JobPage(Page):
                 if product == player.num1 * player.num2:
                     player.job_count += 1
                     used_combinations = player.participant.vars.get('used_combinations', [])
+                    player.num1 = randint(1, 9)
+                    player.num2 = choice([2, 4, 6, 7, 8, 9, 16, 32, 5, 25, 11, 22, 33, 44, 55, 99, 15, 35, 45, 65, 75, 85, 95])
                     new_combination = (player.num1, player.num2)
                     while new_combination in used_combinations or 10 in new_combination:
                         player.num1 = randint(1, 9)
@@ -202,7 +208,7 @@ class JobPage(Page):
                         new_combination = (player.num1, player.num2)
                     used_combinations.append(new_combination)
                     player.participant.vars['used_combinations'] = used_combinations
-                    return {player.id_in_group: {"type": "reload", "data": {"num1": player.num1, "num2": player.num2}}}
+                    return {player.id_in_group: {"type": "reload", "data": {"num1": player.num1, "num2": player.num2, "correct": player.job_count}}}
         
 
 class WaitJob(WaitPage):

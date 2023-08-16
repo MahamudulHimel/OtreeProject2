@@ -1,14 +1,86 @@
 {{block content}}
+<style>
+    
+    .styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.styled-table thead tr {
+    background-color: #165fa3;
+    color: #ffffff;
+    text-align: left;
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+    align-items: center;
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #165fa3;
+}
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+</style>
     <div id="englishContent" class="language-toggle active">
-        <center><h1>Round Summarry</h1></center>
-        Points Earned : {{points}}<br>
+        <center><h1>Round Summarry<br>
+            Round Earnings: {{points}}<br>
         {{if role != "a"}}
             {{ if allowed }}
-            Activity Type :{{if job}} A {{else}} B {{endif}} <br>
+            Activity Type :{{if job}} <img src="https://i.imgur.com/k3TCN23.png" height = '50px'/> {{else}} <img src = "https://i.imgur.com/vtuWLsY.png" height = '50px'/> {{endif}} <br>
             {{ else }}
             Was not allwed by Type-1 <br>
             {{endif}}
+        </h1></center>
         {{endif}}
+        <p>Following table shows average earnings of solvers by colors</p>
+        <table class = "styled-table">
+            <tr>
+                <th>Color</th>
+                <th>Average Earnings</th>
+            </tr>
+            <tr>
+                <td style="color: green;">Green</td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td style="color: green;">Blue</td>
+            </tr>
+        <p>Following table shows information of all allowed solvers</p>
+        <table class = "styled-table">
+            <tr>
+                <th>Color</th>
+                <th>Was Allowed</th>
+                <th>Earnings</th>
+            </tr>
+            {% for p in subsession.get_players %}
+            {{if p.role != "a" and p.allowed}}
+            <tr>
+                {{ if p.role in ["g1","g2",'g3','g4']}} 
+                <td style="color: green;">Green</td>
+                {{else}}
+                <td style="color: blue;">Blue</td>
+                {{endif}}
+                <td>{{if p.allowed and p.job_A}}A{{else}}{{if p.job_A != 1}}B{{endif}}{{endif}}</td>
+                <td>{{p.points}}</td>
+            </tr>
+            {{endif}}
+            {% endfor %}
+            </table>
     </div>
     <div id="spanishContent" class="language-toggle">
         <center><h1>রাউন্ড সংক্ষেপিত</h1></center>
@@ -19,7 +91,6 @@
         টাইপ-1 দ্বারা অনুমোদিত ছিল না <br>
         {{endif}}
     </div>
-
-    {{ next_button }}
+    <button class="next-button large-button">Next</button>
 
 {{endblock}}
