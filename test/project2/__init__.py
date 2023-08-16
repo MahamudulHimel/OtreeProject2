@@ -31,7 +31,7 @@ class C(BaseConstants):
 
     USE_POINTS = True
 
-    payoff = 50
+    payoff = 20
 
     money = cu(1)
 
@@ -138,8 +138,8 @@ class VoteForType2(Page):
         return (not player.role in ["a", "b21", "b22"])
 
 class VotingWait(WaitPage):
-    title_text = "Voting for Type 2 ongoing"
-    body_text = "Plese wait for all Type-1 solvers to finish their voting."
+    title_text = "Eligibility Decision for Type 2 ongoing"
+    body_text = "Plese wait for all Type-1 solvers to provide their decision."
     def after_all_players_arrive(group):
         vote_results = []
         for a in C.roles[:-2]:
@@ -181,20 +181,28 @@ class JobPage(Page):
     timeout_seconds = 30
 
     def vars_for_template(player):
-        return dict(num1=player.num1, num2= player.num2, job = player.job_A, role=player.role)
+        return dict(num1=player.num1, num2=player.num2, job=player.job_A, role=player.role)
 
     def is_displayed(player):
         return (not (player.role == "a")) and player.allowed
     
     def live_method(player, data):
         if data["type"] == 'ans':
-            if data['data']["ans"] == None:
+            if data['data']["ans"] is None:
                 pass
-            elif int(data['data']["ans"]) == player.num1 * player.num2:
-                player.job_count+=1
-                player.num1 = randint(1,10)
-                player.num2 = randint(1,10)
-                return {player.id_in_group:{"type":"reload", "data" : {"num1": player.num1, "num2": player.num2}}}
+            else:
+                product = int(data['data']["ans"])
+                if product == player.num1 * player.num2:
+                    player.job_count += 1
+                    used_combinations = player.participant.vars.get('used_combinations', [])
+                    new_combination = (player.num1, player.num2)
+                    while new_combination in used_combinations or 10 in new_combination:
+                        player.num1 = randint(1, 9)
+                        player.num2 = choice([2, 4, 6, 7, 8, 9, 16, 32, 5, 25, 11, 22, 33, 44, 55, 99, 15, 35, 45, 65, 75, 85, 95])
+                        new_combination = (player.num1, player.num2)
+                    used_combinations.append(new_combination)
+                    player.participant.vars['used_combinations'] = used_combinations
+                    return {player.id_in_group: {"type": "reload", "data": {"num1": player.num1, "num2": player.num2}}}
         
 
 class WaitJob(WaitPage):
@@ -209,16 +217,16 @@ class WaitJob(WaitPage):
                 assigner = player
             elif player.job_A:
                 if player.role in ["b21", "b22"]:
-                    player.points = C.JOB_A_SOLVER_MUL * player.job_count//2 * C.payoff
+                    player.points = C.JOB_A_SOLVER_MUL * player.job_count//2
                     job_A_count+=player.job_count
                 else:
-                    player.points = C.JOB_A_SOLVER_MUL * player.job_count * C.payoff
+                    player.points = C.JOB_A_SOLVER_MUL * player.job_count
                     job_A_count+=player.job_count
             else:
-                player.points = C.JOB_B_SOLVER_MUL * player.job_count * C.payoff
+                player.points = C.JOB_B_SOLVER_MUL * player.job_count
                 job_B_count+=player.job_count
 
-        assigner.points = (C.JOB_A_ASSIGNER_MUL * job_A_count + C.JOB_B_ASSIGNER_MUL*job_B_count) * C.payoff
+        assigner.points = (C.JOB_A_ASSIGNER_MUL * job_A_count + C.JOB_B_ASSIGNER_MUL*job_B_count)
 
 class Results(Page):
     def vars_for_template(player):
@@ -226,7 +234,9 @@ class Results(Page):
 
 class FinalResults(Page):
     def vars_for_template(player):
-        player.payoff = player.in_round(C.payoff_round).points * C.money
+        player.payoff = player.in_round(C.payoff_round).points * C.money * C.payoff
+        if player.role == "a":
+            player.payoff = player.payoff/2
         total = C.participation_fee + player.payoff
         return dict(points = player.payoff, participation_fee = C.participation_fee, round= C.payoff_round, total = total)
     def is_displayed(player):

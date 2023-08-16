@@ -1,132 +1,4 @@
 {{block content}}
-<style>
-    @import url('https://fonts.maateen.me/bensen/font.css');
-    body {
-            position: relative;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-        #sidebar {
-            height: 100%;
-            width: 0; /* Set sidebar width to 0 by default */
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: #165fa3;
-            overflow-x: hidden;
-            transition: 0.3s;
-            padding-top: 60px;
-            padding-bottom: 15px;
-        }
-        #sidebar::-webkit-scrollbar {
-        display: none;
-}
-        #sidebar p {
-            text-decoration: none;
-            font-size: 25px;
-            color: white;
-            display: block;
-            transition: 0.2s;
-            padding-left: 15px;
-        }
-        
-        #sidebar a:hover {
-            color: #f1f1f1;
-        }
-        #main {
-            transition: margin-left 0.3s;
-            padding: 16px;
-            margin-left: 0; /* Set left margin to 0 by default */
-        }
-        .language-toggle {
-            display: none;
-        }
-        .language-toggle.active {
-            display: block;
-        }
-        #toggleButton {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            z-index: 1;
-            color: #165fa3;
-            font-size: 30px;
-        }
-        #openSidebarButton {
-            position: fixed;
-            top: 10px;
-            left: 40px;
-            z-index: 1;
-            font-size: 30px;
-            cursor: pointer;
-            color: #165fa3;
-        }
-        #openSidebarButton.white {
-            color: white;
-        }
-    #englishContent{
-        font-family: Arial, Helvetica, sans-serif;
-    }
-    #spanishContent p{
-        font-family: 'BenSen', sans-serif;
-        font-size: 20px;
-    }
-    table {
-    border-collapse: collapse;
-    width: 100%;
-    border: 1px solid #165fa3;
-    margin: 20px;
-}
-
-/* Style for table headers */
-</style>
-<div id="sidebar">
-    <p><list>
-            <li style="color:white">There are one Assigner, 4 Green Solvers, and 4 Blue Solvers in the experiment. And Solvers are divided into  Type 1 Solvers  and Type 2 Solvers</li>
-            <li style="color:white">All Green Solvers  and 2 randomly selected Blue Solvers are Type 1 Solvers</li>
-            <li style="color:white">Remaining 2 Blue Solvers  are Type 2 Solvers</li>
-            <li style="color:white">
-                These roles are randomly assigned, but the same in every round
-            </li>
-            <li style="color:white">
-                Eligible Solvers participate in multiplication activities for 30 seconds in each round
-            </li>
-            <li style="color:white">
-                Type 1 Solvers  are always eligible to participate in multiplication activities 
-            </li>
-            <li style="color:white">
-                Each Type 1 Solver decides whether to make the Type 2 solvers eligible to participate in the multiplication activities
-            </li>
-            <li style="color:white">
-                The decision of one randomly chosen Type 1 Solver is implemented
-            </li>
-            <li style="color:white">
-                The assigner  assigns eligible Solvers to Activity A or Activity  B
-            </li>
-            <li style="color:white">
-                Assigned solvers solve multiplication problems (Activity A or Activity B) for 30 seconds in each round
-            </li>
-            <li style="color:white">
-                For Type 1 solvers in Activity A each Unit of  activity involves finding the product of two randomly chosen single-digit numbers and Solvers earn 0.5 points (half a point) for each unit of activity
-            </li>
-            <li style="color:white">
-                For Type 2 solvers in Activity A each Unit of activity involves finding the product of two randomly chosen single-digit  numbers three times and earn 0.5 points (half a point) for each Unit of activity
-            </li>
-            <li style="color:white">
-                For Type 1 solvers in Activity B each Unit of activity involves finding the product of two randomly chosen single-digit  numbers and earn 0.25  (a quarter point) points for each Unit of activity
-            </li>
-            <li style="color:white">
-                For Type 2 solvers in Activity B each Unit of  activity involves finding the product of two randomly chosen single-digit numbers and earn 0.25 points (a quarter point) for each Unit of activity
-            </li>
-            <li style="color:white">
-                During payment, the assigner's points are multiplied by 30 , while each solver’s points are multiplied by 50 to determine the corresponding BDT amounts.
-            </li>
-        </list>
-    </p></div>
-<div id="main">
-    <div id="openSidebarButton" onclick="toggleSidebar()" style="font-size: 30px;">Summary</div>
-    <div id="toggleButton" onclick="toggleLanguage()" style="font-size: 30px;">Aa/অক &#9873;</div>
     <div id="spanishContent" class="language-toggle">
         <center><h3>পরীক্ষার নির্দেশাবলী</h3></center><br>
         <h4>ভূমিকা</h4><br>
@@ -186,86 +58,84 @@
     </div>
     <div id="englishContent" class="language-toggle active">
         <center><h3>Experimental Instructions</h3></center><br>
-        <h4>Introduction</h4><br>
+        <h4><b>Introduction</b></h4><br>
         <h6>
             <p>Welcome to this experiment! Your decisions and performance during this experiment will determine how much
                 money you earn.</p>
             <p>It is important that you remain silent and do not look at other people's work. If you have any questions or need
                 assistance, please raise your hand, and an experimenter will come to you. If you talk, laugh, etc., you will be asked
                 to leave, and you will not be paid. We appreciate your cooperation.</p>
-            <p>For today's experiment, you will receive a $7 show-up fee in addition to your earnings during the experiment. You
-                can earn more money based on your decisions, your peers' decisions, and your overall chance. At the end of the
-                experiment, your total earnings will be paid in cash, privately.</p>
-        </h6><br><br>
-        <h4>Instructions</h4><br>
-        <h6>
-            <p>In today's experiment, there are 9 participants: 1 Assigner and 8 Solvers. The Solvers are divided into Type 1
-                Solvers and Type 2 Solvers. Additionally, each Solver is assigned a color: Green or Blue. All Green Solvers are
-                Type 1, while 2 Blue Solvers are Type 1 and the remaining 2 will be Type 2. Roles are randomly assigned to the
-                participants.</p>
-            <img src="https://i.imgur.com/ToZrgeg.png" alt="participants"/> 
-            <p>
+            <p>For today’s experiment, you will receive a 200 BDT show-up fee in addition to your earnings during the experiment. 
+               At the end of the experiment, your total earnings will be paid in cash, privately.
             </p>
-            <p>The Assigner's task is to assign all eligible Solvers to one of two multiplication activities: Activity A or Activity
-                B. Eligible in this context refers to whether or not a Solver is allowed to participate in one of the two multiplication
-                activities.</p>
-                <div class="row">
-                    <div class="column">
-                        <img src="https://i.imgur.com/NxBHIwK.png" alt="assign_tasks"/>
-                    </div>
-                  </div>
-                 
-            <p>Type 1 solvers are always allowed to participate in activities while Type 2 solvers are not initially allowed to
-                participate in activities. Type 1 Solvers make decisions on the eligibility to participate in activities of Type 2 solvers.
-                In other words, Type 1 Solvers have the authority to either allow or not allow Type 2 Solvers to participate in the
-                activities</p>
-                <img src="https://i.imgur.com/oXYJyy2.png" alt="desicions"/>
-            <p>Type 1 Solvers are given individual multiplication questions to solve in Activity A, while Type 2 Solvers are given
-                two such questions to complete one Activity A. Each correctly completed activity earns a Solver 0.50 points (half a
-                point).</p>
-                <img src="https://i.imgur.com/k7atUH3.png" alt="taskAexplanation"/>
-            <p>For instance, a Type 1 Solver might be asked to calculate the product of 2 and 3 as part of one Activity A, while a
-                Type 2 solver might be asked to calculate the products of 3 and 5, and 4 and 9.</p>
-                <img src="https://i.imgur.com/1FT2U4F.png" alt="taskAexplanation"/>
-            <p>They can answer these questions for 30 seconds. The number of activities they complete correctly within this time
-                will be multiplied by 0.5 to determine the total points they earn for that round. For example, if a Solver performs 30
-                activities correctly in 30 seconds, the Solver earns 15 points.</p>
-            <p>In Activity B, any Solver is asked to solve individual multiplication questions. Each question is finding the product
-                of two randomly chosen single-digit numbers. Each correctly completed activity earns a Solver 0.50 points (half a
-                point).</p>
-                <img src="https://i.imgur.com/A1NDtEH.png" alt="taskBexplanation"/>
-            <p>For example, to complete one Activity B, a Solver might be asked to find the product of 3 and 7. The Solver earns
-                0.25 points (a quarter point) by answering it correctly.</p>
-            <p>Solvers have 30 seconds to answer as many questions as they can. The total earnings for a round are calculated by
-                multiplying the number of correct answers by 0.25. For example, if a Solver completes 16 Activity B correctly
-                within 30 seconds, the Solver will earn 4 points.</p>
-            <p>The Assigner can see a Solver's color but not their Type when making assignments.</p>
-            <p>All Type 1 Solvers are always eligible to participate in Activity A and Activity B. However, there are 2 Type 2
-                solvers who are not initially able to be assigned.</p>
-            <p>The eligibility of Type 2 Solvers is determined by the decision of one of the Type 1 Solvers. At the beginning of
-                each round, Type 1 Solvers choose whether to make Type 2 solvers eligible. The decision of one randomly chosen
-                solver is implemented.</p>
-            <p>At the beginning of each round, each Type 1 Solver is asked the following question: "Do you want to allow the Type
-                2 Solvers to participate in the problem-solving activity?"</p>
-            <p>Once each Type 1 Solver has answered this question, one of them is chosen randomly. The choice made by the
-                randomly chosen Type 1 Solver is implemented.</p>
-            <p>After this is determined, the Assigner must assign all the eligible Solvers to Activity A or Activity B. If the two
-                Type 2 solvers are eligible, then 8 solvers must be assigned. If the two Type 2 Solvers are ineligible, there are only 6
-                Solvers that must be assigned.</p>
-            <p>Note that if the two Blue Solvers are ineligible, all six Solvers are Type 1. If the Two Blue Solvers are eligible, then
-                all the Green Solvers are Type 1, two Blue Solvers are Type 1, and two Blue Solvers are Type 2. The Assigner does
-                not know which of the two eligible Solvers is Type 2.</p>
-            <p>The Assigner's earnings are based on the number of completed Activity A and Activity B. Specifically, the Assigner
-                earns the total number of completed Activity A multiplied by 0.8 plus the total number of completed Activity B
-                multiplied by 0.5, minus the amounts of money given to the solvers for the completed Activity A and Activity B.
-                For example, if 90 Activity A and 30 Activity B are completed, the assigner earns</p>
-            <p>(0.8)(90)+ (0.5)(30)-(0.5)(90)-(0.25)(30)= 34.5 points.</p>
-            <p>The Assigner's earnings will increase with the completion of Activity A and Activity B. However, if the number of
-                Solvers assigned is small, such as 6, then the Assigner's earnings will likely be lower. Assigning Type 2 employees
-                to Task A increases the chance of lowering the number of completed tasks and subsequently reducing the Assigner's
-                earnings.</p>
+            <p>There will be 30 rounds during this experiment, and one round will be randomly chosen for payment. 
+                Points will be converted to dollar amounts for payment at a rate of 1 point per 25 BDT for one role and 1 point per 50 BDT for another role.</p>
         </h6><br><br>
-    <h5>Example 1</h5><br>
+        <h4><b>Instructions</b></h4><br>
+        <h6>
+            <h5><b>Assigners & Solvers</b></h5><br>
+            <p>In today's experiment, there are 9 participants. 
+                One participant will be randomly chosen to be the Assigner. 
+                The other 8 participants are Solvers.</p>             
+            <p>There are 6 Type 1 Solvers and 2 Type 2 Solvers. A Solver’s Type is randomly assigned. 
+                Each Solver knows their own Type, but the Assigner does not know a Solver’s Type. 
+            </p>
+            <img src="https://i.imgur.com/ToZrgeg.png" alt="participants" width="450"/><br><br>
+            <p>Additionally, each Solver is assigned a color: Green or Blue. 
+                Specifically, 4 of the Type 1 Solvers are randomly assigned to be Green.
+                The remaining 2 Type 1 Solvers are assigned to be Blue, and the 2 Type 2 Solvers are also assigned to be Blue. </p>
+             <p>Note that this means that all Green Solvers are Type 1, and that 2 Blue Solvers are Type 1 and 2 Blue Solvers are Type 2. The Assigner is able to observe a Solver’s color, but is unable to observe a Solver’s Type. 
+            </p><br>
+            <h5><b>Activities</b></h5><br>  
+            <p>During each period, Solvers may be able to participate in 1 of 2 possible activities for 30 seconds. 
+                Both Activities involve simple multiplication problems. 
+                For each problem, two single-digit numbers are randomly chosen, 
+                and the correct answer is the product of the two numbers. 
+            </p>  
+            <p>In Activity A, Solvers earn 0.5 points per Unit. 
+                In Activity B, Solvers earn 0.25 points per Unit.
+            </p>
+            <p>In Activity A, a Type 1 Solver completes a Unit after correctly answering 1 multiplication problem.</p> 
+            <img src="https://i.imgur.com/k7atUH3.png" alt="taskAexplanation" width="500"/><br><br>
+            <p>A Type 2 Solver completes a Unit after correctly answering 2 multiplication problems. </p>
+            <img src="https://i.imgur.com/1FT2U4F.png" alt="taskAexplanation" width="500"/><br><br>    
+            <p>In Activity B, all Solvers complete a Unit after correctly answering 1 multiplication problem. </p>
+            <img src="https://i.imgur.com/A1NDtEH.png" alt="taskBexplanation" width="500"/><br><br>
+            <h5><b>Eligibility</b></h5> <br>
+            <p>All Type 1 are automatically eligible to participate in the Activities. 
+                Recall that 4 of these Type 1 Solvers are Green and that 2 of these Type 1 Solvers are Blue. 
+                Further recall that the Assigner is not able to observe a Solver’s Type, but can observe their Color.</p>
+            <p>The 2 Type 2 Solvers, who are both Blue, are not automatically eligible to participate in the Activities.</p>
+            <p>At the beginning of each period, each of the 6 Type 1 Solvers is asked whether they would like the 2 Type 2 Solvers to be eligible or not. 
+                Specifically, each Type 1 Solver responds to the question: "Would you like the 2 Type 2 Solvers to be eligible?"</p> 
+            <img src="https://i.imgur.com/oXYJyy2.png" alt="desicions"/><br><br>
+            <p>After all 6 Type 1 Solvers have responded to this question, one of them is randomly selected, and their choice is implemented</p>
+            <p>Note that if the Type 2 Solvers are not eligible, they are not able to participate in either Activity and must wait quietly for the round to end. </p><br>
+            <h5><b>Assignment</b></h5><br>
+            <p>After the eligibility of the 2 Blue Type 2 Solvers is determined, the Assigner assigns each of the eligible Solvers to one of the 2 Activities by dragging and dropping them.</p> 
+
+            <p>Note that if the 2 Blue Type 2 Solvers are eligible, the Assigner must assign 8 solvers, while if the 2 Blue Type 2 Solvers are not eligible, the Assigner must assign 6 solvers.</p>
+                
+            <p>If the 2 Blue Type 2 Solvers are not eligible, the Assigner knows that all 6 eligible Solvers are Type 1. </p> 
+                
+            <p>If the 2 Blue Type 2 Solvers are eligible, the Assigner knows that the 4 Green Solvers are Type 1, and that 2 of the Blue Solvers are Type 1, while 2 of the Blue Solvers are Type 2. 
+                </p>
+            <br><br>
+            <h5><b>Assigner Earnings</b></h5><br>
+            <p>The Assigner's earnings for the period are based on the number of Units that are completed by Solvers assigned to Activity A, and the number of Units completed by Solvers assigned to Activity B. <br><br>
+                Specifically, the Assigner earns 0.8 multiplied by the number of Units completed by Solvers assigned to Activity A  plus the 0.5 multiplied by the number of Units completed by Solvers assigned to Activity B minus the earnings of the Solvers. 
+                If UA is the number of Units completed by Solvers assigned to Activity A, and UB is the number of Units completed by Solvers assigned to Activity B, then the Assigner’s earnings for the period are <br><br>
+
+                (0.8) UA+(0.5) UB-(0.5) UA-(0.25) UB <br><br>
+                
+                Note that the Assigner earns more per Unit of Activity A. 
+                However, Type 2 Solvers must solve 2 multiplication problems per Unit of Activity A, but only 1 multiplication problem per Unit of Activity B . 
+                Type 1 Solvers must answer a single multiplication problem per Unit in both Activities.
+            </p>
+
+
+        </h6><br><br>
+    <h5><b>Example 1</b></h5><br>
         <h6>
             <p>The randomly chosen Type 1 Solver decides to make the Type 2 Solvers ineligible to participate in Activities.</p>
             <p>The Assigner assigns 4 Type 1 Solvers to Activity A, and 2 Type 1 Solvers to Activity B.</p>
@@ -276,7 +146,7 @@
                 the Assigner’s round earnings are</p>
             <p>(0.8*50 + 0.5*40)-(0.5)(50)-(0.25)(40)= 25 points.</p>
         </h6><br><br>
-    <h5>Example 2</h5><br>
+    <h5><b>Example 2</b></h5><br>
         <h6>
             <p>The randomly chosen Type 1 Solver decides to make the Type 2 Solvers eligible to participate in Activities.</p>
             <p>The Assigner assigns 4 Type 1 Solvers to Activity A, and 4 Type 1 Solvers to Activity B.</p>
@@ -284,49 +154,15 @@
             <p>If a Solver performs 18 Activity B correctly in the 30 seconds time period, the Solver earns (18)(0.25)= 4.5 points.</p>
             <p>Suppose the total correctly completed Activity A and Activity B by Solvers are 60 and 60. In that case, the
                 Assigner’s round earnings are</p>
-            <p>(0.8*60+ 0.5*60)-(0.5)(60)-(0.25)(60)= 33 points.</p>
-            <p>There will be 30 rounds of the experiment, and one round will be randomly chosen for payment. Points will be
-                converted to dollar amounts for payment.</p>
-            <p>The employer's points will be equivalent to dollars, while each employee's points will be multiplied by 3 to
-                determine the corresponding dollar amounts. For example, if an employer earns 21 points, they will make 21 dollars
-                from the experiment, excluding the show-up fee. If an employer earns 8 points, they will make 24 dollars, excluding
-                the $7 show-up fee.</p>
-            <p>Before we begin the experiment, you will play a practice round. In the practice round, you will play as an Assigner
-                or a Solver, and your role will remain the same in the actual experiment. This is meant for you to familiarize
-                yourselves with the experiment. Choices made in the practice round will be unpaid and will not affect the actual
-                experiment.</p>
+            <p>(0.8*60+ 0.5*60)-(0.5)(60)-(0.25)(60)= 33 points.</p><br>
+            <h5><b>Payments</b></h5><br>
+            <p>There are 30 rounds of the experiment, and one round is randomly chosen for payment. Points are converted to dollar amounts for payment.</p>
+            <p>The Assigner's points will be multiplied by 10, while each Solver's points are multiplied by 20 to determine the corresponding dollar amounts. For example, if an Assigner earns 21 points, she makes 210 BDT from the experiment, excluding the 200 BDT show-up fee. If a Solver earns 8 points, she makes 160 BDT, excluding the 200 BDT show-up fee.
+            </p>
 
         </h6><br>
+        <button class="next-button large-button">Next</button>
     </div>
-    {{ next_button }}
-</div>
-<script>
-    function toggleLanguage() {
-        var englishContent = document.getElementById("englishContent");
-        var spanishContent = document.getElementById("spanishContent");
-
-        englishContent.classList.toggle("active");
-        spanishContent.classList.toggle("active");
-    }
     
-    function toggleSidebar() {
-            var sidebar = document.getElementById("sidebar");
-            var main = document.getElementById("main");
-            var openSidebarButton = document.getElementById("openSidebarButton");
 
-            if (sidebar.style.width === "40%") {
-                sidebar.style.width = "0";
-                sidebar.style.paddingLeft = "0px"
-                sidebar.style.paddingRight = "0px"
-                main.style.marginLeft = "0"; /* Set left margin to 0 */
-                openSidebarButton.classList.remove("white");
-            } else {
-                sidebar.style.width = "40%";
-                sidebar.style.paddingLeft = "15px"
-                sidebar.style.paddingRight = "15px"
-                main.style.marginLeft = "40%"; /* Set left margin to 40% */
-                openSidebarButton.classList.add("white");
-            }
-        }
-</script>
 {{endblock}}
