@@ -1,0 +1,74 @@
+{{block content}}
+<style>
+    
+        #err {
+            position: fixed;
+            bottom: 30px;
+            right: 10px;
+            z-index: 1;
+            color: red;
+            size : 30px,
+        }
+        
+</style>
+
+    <div id = "err" style="display: none;">
+        <p>Wrong answer
+    </p>
+    </div>
+    <div id="englishContent" class="language-toggle active">
+        <center><h1>Test Questions</h1></center>
+    </div>
+    <div id="spanishContent" class="language-toggle">
+        <center><h1>রাউন্ড সংক্ষেপিত</h1></center>
+    </div>
+
+    <h3 class="language-toggle active"><p>Please answer the following questions to ensure you completely understand the experiment.</p><h3>
+    <h3 class="language-toggle">bb</h3>
+    <form id = "myForm">
+    <h4 class = "language-toggle active"><p>1.  Suppose you are a Type 1 solver in Activity A. In that case, each Unit of Activity involves -</p></h4>
+    <h4 class="language-toggle">bb</h4>
+
+        <input type = "radio" name="1" value = True id = "1.1" onchange="checkEligibility()"/>
+        <label for = "1.1" > <p class="language-toggle active">Finding the product of two randomly chosen single-digit numbers (e.g.: 9*7)</p><p class="language-toggle">bb</p></label><br>
+        <input type = "radio" name="1" value = False id = "1.2" onchange="checkEligibility()"/>
+        <label for = "1.2"> <p class="language-toggle active">Finding the product of two randomly chosen double-digit numbers (e.g.: 27*49)</p><p class="language-toggle">bb</p></label><br>
+        <input type = "radio" name="1" value = False id = "1.3" onchange="checkEligibility()"/>
+        <label for = "1.3"> <p class="language-toggle active">Finding the product of two randomly chosen single-digit numbers two times (e.g.: 9*7, and 4 * 3) </p><p class="language-toggle">bb</p></label><br>
+
+        
+
+        <button onclick="handleButtonClick()" class="next-button large-button" style="display: none;" id = "submitButton">Submit</button>
+    </form>
+    <br>
+    <br>
+
+<script>
+    
+    function checkEligibility(){
+    // Access the form element
+    // Access the submit button
+    const submitButton = document.getElementById("submitButton");
+
+    // Add a change event listener to the radio buttons
+    // Check if the "female" radio button is selected
+    const ans1 = document.getElementById("1.1");
+    
+
+    if (ans1.checked) {
+        // Show the submit button
+        submitButton.style.display = "block";
+        document.getElementById("err").style.display = "none"
+    } else {
+        // Hide the submit button
+        submitButton.style.display = "none";
+        document.getElementById("err").style.display = "block"
+    
+    if (!(ans1.checked)) document.getElementById("err1").style.display = "block";
+    else document.getElementById("err1").style.display = "none";
+    }
+}
+
+
+</script>
+{{endblock}}

@@ -1,0 +1,73 @@
+{{block content}}
+<style>
+    
+        #err {
+            position: fixed;
+            bottom: 30px;
+            right: 10px;
+            z-index: 1;
+            color: red;
+            size : 30px,
+        }
+        
+</style>
+
+    <div id = "err" style="display: none;">
+        <p>Wrong answer
+    </p>
+    </div>
+    <div id="englishContent" class="language-toggle active">
+        <center><h1>Test Questions</h1></center>
+    </div>
+    <div id="spanishContent" class="language-toggle">
+        <center><h1>রাউন্ড সংক্ষেপিত</h1></center>
+    </div>
+
+    
+    <h3 class="language-toggle">bb</h3>
+    <form id = "myForm">
+
+        <h4 class = "language-toggle active"><br><p>6.  If you complete 16 Units in Activity B correctly in a round, you earn</p></h4>
+        <h4 class="language-toggle">bb</h4>
+
+        <input type = "radio" name="6" value = True id = "6.1" onchange="checkEligibility()"/>
+        <label for = "6.1"> <p class="language-toggle active">BDT 80</p><p class="language-toggle">bb</p></label><br>
+        <input type = "radio" name="6" value = False id = "6.2" onchange="checkEligibility()"/>
+        <label for = "6.2"> <p class="language-toggle active">BDT 100</p><p class="language-toggle">bb</p></label><br>
+        <input type = "radio" name="6" value = False id = "6.3" onchange="checkEligibility()"/>
+        <label for = "6.3"> <p class="language-toggle active">BDT 200 </p><p class="language-toggle">bb</p></label><br>
+
+        <button onclick="handleButtonClick()" class="next-button large-button" style="display: none;" id = "submitButton">Submit</button>
+    </form>
+    <br>
+    <br>
+
+<script>
+    
+    function checkEligibility(){
+    // Access the form element
+    // Access the submit button
+    const submitButton = document.getElementById("submitButton");
+
+    // Add a change event listener to the radio buttons
+    // Check if the "female" radio button is selected
+    const ans6 = document.getElementById("6.1");
+
+    if (ans6.checked) {
+        // Show the submit button
+        submitButton.style.display = "block";
+        document.getElementById("err").style.display = "none"
+    } else {
+        // Hide the submit button
+        submitButton.style.display = "none";
+        document.getElementById("err").style.display = "block"
+    
+    
+    if (!(ans6.checked)) document.getElementById("err6").style.display = "block";
+    else document.getElementById("err6").style.display = "none";
+    }
+}
+
+
+</script>
+{{endblock}}

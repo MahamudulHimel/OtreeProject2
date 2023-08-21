@@ -195,7 +195,7 @@ class WaitJobAssign(WaitPage):
             p = group.get_player_by_role(C.roles[i])
             p.job_A = array[i] if array[i] != None else False
             p.num1 = randint(1, 9)
-            p.num2 = choice([2, 4, 6, 7, 8, 9, 16, 32, 5, 25, 11, 22, 33, 44, 55, 99, 15, 35, 45, 65, 75, 85, 95])
+            p.num2 = choice([2, 3, 5, 4, 6, 7, 8, 9, 16, 32, 5, 25, 11, 22, 33, 44, 55, 99, 15, 35, 45])
             i+=1
 
 class JobPage(Page):
@@ -217,11 +217,11 @@ class JobPage(Page):
                     player.job_count += 1
                     used_combinations = player.participant.vars.get('used_combinations', [])
                     player.num1 = randint(1, 9)
-                    player.num2 = choice([2, 4, 6, 7, 8, 9, 16, 32, 5, 25, 11, 22, 33, 44, 55, 99, 15, 35, 45, 65, 75, 85, 95])
+                    player.num2 = randint(1, 9)
                     new_combination = (player.num1, player.num2)
                     while new_combination in used_combinations or 10 in new_combination:
                         player.num1 = randint(1, 9)
-                        player.num2 = choice([2, 4, 6, 7, 8, 9, 16, 32, 5, 25, 11, 22, 33, 44, 55, 99, 15, 35, 45, 65, 75, 85, 95])
+                        player.num2 = randint(1, 9)
                         new_combination = (player.num1, player.num2)
                     used_combinations.append(new_combination)
                     player.participant.vars['used_combinations'] = used_combinations
@@ -265,7 +265,27 @@ class FinalResults(Page):
     def is_displayed(player):
         return player.round_number == C.NUM_ROUNDS
 
-class Questions(Page):
+class q1(Page):
+    def is_displayed(player):
+        return player.round_number == 1
+    
+class q2(Page):
+    def is_displayed(player):
+        return player.round_number == 1
+    
+class q3(Page):
+    def is_displayed(player):
+        return player.round_number == 1
+    
+class q4(Page):
+    def is_displayed(player):
+        return player.round_number == 1
+    
+class q5(Page):
+    def is_displayed(player):
+        return player.round_number == 1
+    
+class q6(Page):
     def is_displayed(player):
         return player.round_number == 1
 
@@ -275,5 +295,5 @@ class InstructionsWait(WaitPage):
     def is_displayed(player):
         return player.round_number == 1
 
-page_sequence = [instructions,Questions,Introduction,VoteForType2,VotingWait, JobAssign, WaitJobAssign, JobPage, WaitJob,Results,FinalResults]
+page_sequence = [instructions,q1,q2,q3,q4,q5,q6,Introduction,VoteForType2,VotingWait, JobAssign, WaitJobAssign, JobPage, WaitJob,Results,FinalResults]
         
